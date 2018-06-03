@@ -1,9 +1,0 @@
-.bit-widget {
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important; }
-  .bit-widget .bit-event-list-title {
-    font-weight: 800;
-    text-decoration: none !important; }
-    .bit-widget .bit-event-list-title.bit-clickable {
-      font-weight: 300 !important; }
-  .bit-widget .bit-location {
-    font-weight: 300 !important; }
