@@ -1,0 +1,20 @@
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+body {
+	color: #0b363b;
+	background-color: #f8faee;
+}
+
+a {
+	color: #0b363b;
+	text-decoration: none;
+	transition: color 0.3s linear;
+
+	&:hover {
+		color: #dc626f;
+	}
+}

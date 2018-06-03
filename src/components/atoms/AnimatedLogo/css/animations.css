@@ -1,0 +1,21 @@
+@keyframes keyframe-animation-rotate-fwd {
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(20deg); }
+  100% {
+    transform: rotate(0deg); } }
+
+@keyframes keyframe-animation-rotate-rwd {
+  0% {
+    transform: rotate(20deg); }
+  50% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(20deg); } }
+
+.a-animated-logo__layer--flower {
+  animation: keyframe-animation-rotate-fwd 50s linear infinite; }
+
+.a-animated-logo__layer--leaf {
+  animation: keyframe-animation-rotate-rwd 50s linear infinite; }

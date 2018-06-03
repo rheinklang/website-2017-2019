@@ -1,0 +1,24 @@
+.m-section {
+  width: 100%;
+  max-width: 1160px;
+  margin: 20px auto;
+  padding: 20px; }
+
+.m-section__title,
+.m-section__description {
+  padding: 0 0 40px 0; }
+
+.m-section__title {
+  max-width: 80%;
+  margin: 0 auto; }
+
+.m-section__description {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto; }
+
+body * .m-section:first-of-type {
+  margin-top: 0; }
+
+body * .m-section:last-of-type {
+  margin-bottom: 0; }
