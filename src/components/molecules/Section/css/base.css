@@ -1,0 +1,32 @@
+.m-section {
+  width: 100%;
+  padding: 70px 10px; }
+
+.m-section__article {
+  margin: 0 auto;
+  max-width: 1160px; }
+
+.m-section__title,
+.m-section__description {
+  padding: 0 0 40px 0; }
+
+.m-section__title {
+  max-width: 80%;
+  margin: 0 auto; }
+
+.m-section__description {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto; }
+
+@media all and (max-width: 500px) {
+  .m-section__article {
+    overflow: hidden; } }
+
+body * .m-section:first-of-type {
+  margin-top: 0;
+  padding-top: 90px; }
+
+body * .m-section:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 90px; }

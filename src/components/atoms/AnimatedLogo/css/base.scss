@@ -9,9 +9,17 @@
 	.a-animated-logo__layer {
 		display: block;
 		width: 500px;
+		max-width: 100%;
 		position: absolute;
 		left: 0;
 		top: 0;
 		flex: 1;
+	}
+}
+
+@media all and (max-width: 500px) {
+	.a-animated-logo {
+		max-width: 100%;
+		height: 350px;
 	}
 }

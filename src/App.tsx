@@ -1,8 +1,11 @@
 import * as React from 'react';
 import './assets/css/index.css';
 import { AnimatedLogo } from './components/atoms/AnimatedLogo';
+import { Footer } from './components/atoms/Footer';
 import { TourDates } from './components/atoms/TourDates';
 // import { Loader } from './components/atoms/Loader';
+import { AvatarTree } from './components/molecules/AvatarTree';
+import { Column, Grid } from './components/molecules/Grid';
 import { Section } from './components/molecules/Section';
 import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
 
@@ -15,31 +18,37 @@ class App extends React.Component<any, IAppState> {
 		display: true,
 	};
 
-	// public componentDidMount() {
-	// 	const tid = setTimeout(() => {
-	// 		this.setState({ display: true });
-	// 		clearTimeout(tid);
-	// 	}, 1000);
-	// }
-
 	public render() {
-		// const { display } = this.state;
-
-		// if (!display) {
-		// 	return (
-		// 		<main className="o-react-app">
-		// 			<Loader />
-		// 		</main>
-		// 	);
-		// }
-
 		return (
 			<main className="o-react-app">
 				<Section id="logo">
 					<AnimatedLogo />
 				</Section>
-				<Section id="tour-dates" title="Tourdaten">
+				<Section id="tour-dates" colorize="red" title="Tourdaten">
 					<TourDates />
+				</Section>
+				<Section id="about-us" colorize="green" title="Über uns">
+					<Grid>
+						<Column spacing="md">
+							<p>
+								Wir sind sehr stolz darauf, uns als DAS Festival für elektronische Musik im Rheintal
+								bezeichnen zu dürfen. Unser Ziel ist es, die immer populärer werdende elektronische
+								Musik mit einer frischen Brise ins sonnige Rheintal zu bringen und die deepen Vibes des
+								House, vermischt mit technoiden Klängen dem Rhein entlang mit dem Winde bis weit in die
+								Ferne zu tragen.{' '}
+							</p>
+						</Column>
+						<Column spacing="md">
+							<p>
+								Sei auch dabei und feier durch den hell erleuchteten Tag bis weit in die dunkle Nacht
+								hinein und tanze zusammen mit den tiefen Bässen der elektronischen Musik um das Rheintal
+								beben zu lassen, bis eine riesige Welle aus Euphorie aus dem Rhein emporsteigt und dich
+								und die Festivalbesucher mit Endorphinen überschütten wird. Wir freuen uns, auch Dir am
+								Rheinklang-Festival auf unserem Gelände "über den Weg zu tanzen"!
+							</p>
+						</Column>
+					</Grid>
+					<AvatarTree />
 				</Section>
 				<Section
 					id="social"
@@ -49,6 +58,7 @@ class App extends React.Component<any, IAppState> {
 				>
 					<SocialMediaLinks />
 				</Section>
+				<Footer />
 			</main>
 		);
 	}

@@ -1,6 +1,10 @@
 .bit-widget {
 	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
 
+	.bit-logo-container {
+		display: none;
+	}
+
 	.bit-event-list-title {
 		font-weight: 800;
 		text-decoration: none !important;
@@ -12,5 +16,33 @@
 
 	.bit-location {
 		font-weight: 300 !important;
+	}
+}
+
+.h-colorize--red .bit-widget {
+	background-color: transparent !important;
+
+	.bit-event,
+	.bit-upcoming-events,
+	.bit-past-events {
+		border-color: #f8faee;
+	}
+
+	.bit-offers,
+	.bit-rsvp {
+		border-radius: 4px;
+		border-color: #541a16 !important;
+	}
+
+	.bit-offers {
+		background-color: #541a16 !important;
+	}
+
+	.bit-rsvp {
+		border-color: #541a16 !important;
+	}
+
+	* {
+		color: #f8faee !important;
 	}
 }

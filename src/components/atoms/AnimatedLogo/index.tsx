@@ -1,13 +1,15 @@
-import React from 'react';
-import './css/base.css';
-import './css/animations.css';
+import * as React from 'react';
+import foreground from './assets/foreground.png';
 import flower from './assets/layer-flower.png';
 import leaf from './assets/layer-leaf.png';
-import foreground from './assets/foreground.png';
+import './css/animations.css';
+import './css/base.css';
 
-export type AnimatedLogoPropsType = {};
+export interface IAnimatedLogoProps {
+	modifier?: string;
+}
 
-export const AnimatedLogo = (props: AnimatedLogoPropsType) => {
+export const AnimatedLogo = (props: IAnimatedLogoProps) => {
 	return (
 		<div className="a-animated-logo">
 			<img

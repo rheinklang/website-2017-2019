@@ -1,0 +1,9 @@
+.m-section.h-colorize--red {
+  color: #f8faee;
+  background-color: #ed8197; }
+
+.m-section.h-colorize--green {
+  color: #f8faee;
+  background-color: #70973d; }
+  .m-section.h-colorize--green a:hover {
+    color: #f8faee; }

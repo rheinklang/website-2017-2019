@@ -1,0 +1,17 @@
+.m-section {
+	&.h-colorize--red {
+		color: #f8faee;
+		background-color: #ed8197;
+	}
+
+	&.h-colorize--green {
+		color: #f8faee;
+		background-color: #70973d;
+
+		a {
+			&:hover {
+				color: #f8faee;
+			}
+		}
+	}
+}

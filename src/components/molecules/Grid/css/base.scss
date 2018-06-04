@@ -1,0 +1,31 @@
+.m-grid {
+	width: 100%;
+	max-width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+}
+
+.m-grid__column {
+	align-self: auto;
+	flex-grow: 1;
+	flex-shrink: 1;
+
+	&.m-grid__column--space-sm {
+		padding: 15px;
+	}
+
+	&.m-grid__column--space-md {
+		padding: 20px;
+	}
+}
+
+@media all and (max-width: 500px) {
+	.m-grid {
+		display: block;
+
+		.m-grid__column {
+			flex-grow: 0;
+		}
+	}
+}
