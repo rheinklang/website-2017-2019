@@ -1,0 +1,9 @@
+.h-separator {
+	height: 2px;
+	width: 100%;
+	display: block;
+
+	&.h-separator--dark {
+		background-color: #0b363b;
+	}
+}

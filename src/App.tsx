@@ -1,13 +1,17 @@
 import * as React from 'react';
 import './assets/css/index.css';
+import { Separator } from './components/abstract/Separator';
 import { AnimatedLogo } from './components/atoms/AnimatedLogo';
+import { Countdown } from './components/atoms/Countdown';
 import { Footer } from './components/atoms/Footer';
 import { TourDates } from './components/atoms/TourDates';
 // import { Loader } from './components/atoms/Loader';
-import { AvatarTree } from './components/molecules/AvatarTree';
+// import { AvatarTree } from './components/molecules/AvatarTree';
 import { Column, Grid } from './components/molecules/Grid';
+import { PresaleInfo } from './components/molecules/PresaleInfo/index';
 import { Section } from './components/molecules/Section';
 import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
+import { Sponsors } from './components/molecules/Sponsors';
 
 export interface IAppState {
 	display: boolean;
@@ -48,8 +52,20 @@ class App extends React.Component<any, IAppState> {
 							</p>
 						</Column>
 					</Grid>
-					<AvatarTree />
+					{/* <AvatarTree /> */}
 				</Section>
+				<Section id="countdown" colorize="dark-turquise" title="Es geht schon bald los!">
+					<PresaleInfo />
+					<Grid>
+						<Column>
+							<Countdown />
+						</Column>
+					</Grid>
+				</Section>
+				<Section id="sponsors" colorize="white" title="Unsere Unterstützung">
+					<Sponsors />
+				</Section>
+				<Separator modifier="dark" />
 				<Section
 					id="social"
 					title="Social Media"

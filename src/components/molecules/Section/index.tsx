@@ -7,7 +7,7 @@ export interface ISectionProps {
 	id?: string;
 	title?: string;
 	description?: string;
-	colorize?: 'red' | 'green';
+	colorize?: 'red' | 'green' | 'dark-turquise' | 'white';
 }
 
 export const Section = ({ id, colorize, title, description, children }: ISectionProps) => {

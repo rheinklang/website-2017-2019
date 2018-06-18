@@ -12,7 +12,12 @@ body {
 a {
 	color: #0b363b;
 	text-decoration: none;
+	display: inline-block;
 	transition: color 0.3s linear;
+
+	.a-icon {
+		margin-left: 5px;
+	}
 
 	&:hover {
 		color: #dc626f;

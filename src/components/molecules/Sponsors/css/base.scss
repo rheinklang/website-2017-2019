@@ -1,0 +1,37 @@
+.m-sponsors {
+	.a-sponsor {
+		display: block;
+		margin: 20px;
+
+		.a-sponsor__image {
+			margin: 0 auto;
+			filter: gray;
+			filter: grayscale(1);
+			transition: all 0.8s ease-in-out;
+
+			&:hover {
+				filter: none;
+				filter: grayscale(0);
+			}
+		}
+	}
+
+	.m-sponsors__row {
+		margin: 30px 0;
+	}
+
+	.a-sponsor__image {
+		max-width: 220px;
+		max-height: 120px;
+	}
+
+	.m-sponsors__primary {
+		.a-sponsor__image {
+			max-width: 280px;
+		}
+	}
+
+	.m-grid__column {
+		align-self: center;
+	}
+}

@@ -134,7 +134,15 @@ h2 {
 p {
   font-size: 1rem;
   line-height: 1.25rem;
-  font-weight: 300; }
+  font-weight: 300;
+  margin-bottom: 10px; }
+
+.h-hide-on-mobile {
+  display: none; }
+
+@media all and (min-width: 500px) {
+  .h-hide-on-mobile {
+    display: initial; } }
 
 *,
 *:after,
@@ -148,6 +156,9 @@ body {
 a {
   color: #0b363b;
   text-decoration: none;
+  display: inline-block;
   transition: color 0.3s linear; }
+  a .a-icon {
+    margin-left: 5px; }
   a:hover {
     color: #dc626f; }

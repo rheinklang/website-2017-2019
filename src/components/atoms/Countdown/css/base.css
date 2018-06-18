@@ -1,0 +1,19 @@
+.a-countdown {
+  margin: 50px 0 0 0; }
+  .a-countdown .a-countdown__content {
+    text-align: center;
+    line-height: 5em; }
+  .a-countdown .a-countdown__content-fragment {
+    font-weight: 700;
+    border: 3px solid #f8faee;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 1.5em;
+    margin: 0 10px; }
+  .a-countdown .a-countdown__content-text {
+    font-weight: 300;
+    font-size: 2em; }
+
+@media all and (max-width: 800px) {
+  .a-countdown__content-wrapper {
+    display: block; } }

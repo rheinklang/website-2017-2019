@@ -10,7 +10,24 @@
 
 		a {
 			&:hover {
-				color: #f8faee;
+				color: #909b59;
+			}
+		}
+	}
+
+	&.h-colorize--white {
+		background-color: #fff;
+	}
+
+	&.h-colorize--dark-turquise {
+		color: #f8faee;
+		background-color: #0b363b;
+
+		a {
+			color: #f8faee;
+
+			&:hover {
+				color: #909b59;
 			}
 		}
 	}
