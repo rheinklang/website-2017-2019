@@ -104,3 +104,4 @@ yarn-error.log*
 
 # Built from SCSS
 ./src/**/*.css
+./src/assets/css/**/*.css
