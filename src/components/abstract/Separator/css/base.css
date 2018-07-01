@@ -1,6 +1,9 @@
 .h-separator {
   height: 2px;
   width: 100%;
-  display: block; }
+  display: block;
+  transform: skew(0, 5deg); }
   .h-separator.h-separator--dark {
     background-color: #0b363b; }
+  .h-separator.h-separator--skew-inverse {
+    transform: skew(0, -5deg); }

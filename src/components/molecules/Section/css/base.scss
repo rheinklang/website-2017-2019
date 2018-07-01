@@ -1,11 +1,21 @@
 .m-section {
 	width: 100%;
-	padding: 70px 10px;
+	padding: 110px 10px;
+	transform: skew(0, 5deg);
 }
 
 .m-section__article {
 	margin: 0 auto;
 	max-width: 1160px; // 1200 - (2x20px)
+	transform: skew(0, -5deg);
+}
+
+.m-section.m-section--skew-inverse {
+	transform: skew(0, -5deg);
+
+	.m-section__article {
+		transform: skew(0, 5deg);
+	}
 }
 
 .m-section__title,
