@@ -1,10 +1,17 @@
 .m-section {
   width: 100%;
-  padding: 70px 10px; }
+  padding: 110px 10px;
+  transform: skew(0, 5deg); }
 
 .m-section__article {
   margin: 0 auto;
-  max-width: 1160px; }
+  max-width: 1160px;
+  transform: skew(0, -5deg); }
+
+.m-section.m-section--skew-inverse {
+  transform: skew(0, -5deg); }
+  .m-section.m-section--skew-inverse .m-section__article {
+    transform: skew(0, 5deg); }
 
 .m-section__title,
 .m-section__description {
