@@ -25,7 +25,23 @@
 		max-height: 120px;
 	}
 
+	.a-sponsor {
+		@media all and (max-width: 500px) {
+			margin: 20px auto;
+		}
+
+		margin: 30px;
+	}
+
 	.m-sponsors__primary {
+		.a-sponsor {
+			@media all and (max-width: 500px) {
+				margin: 50px auto;
+			}
+
+			margin: 40px;
+		}
+
 		.a-sponsor__image {
 			max-width: 280px;
 		}

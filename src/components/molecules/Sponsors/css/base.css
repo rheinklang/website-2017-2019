@@ -17,6 +17,18 @@
   max-width: 220px;
   max-height: 120px; }
 
+.m-sponsors .a-sponsor {
+  margin: 30px; }
+  @media all and (max-width: 500px) {
+    .m-sponsors .a-sponsor {
+      margin: 20px auto; } }
+
+.m-sponsors .m-sponsors__primary .a-sponsor {
+  margin: 40px; }
+  @media all and (max-width: 500px) {
+    .m-sponsors .m-sponsors__primary .a-sponsor {
+      margin: 50px auto; } }
+
 .m-sponsors .m-sponsors__primary .a-sponsor__image {
   max-width: 280px; }
 

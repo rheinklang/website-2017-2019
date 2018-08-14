@@ -74,6 +74,13 @@ export const Sponsors = () => (
 					image="swisscanmachinery.jpg"
 				/>
 			</Column>
+			<Column>
+				<Sponsor
+					name="Sonnenbräu - Rheintaler Bier"
+					link="https://www.sonnenbraeu.ch/"
+					image="sonnenbraeu.jpg"
+				/>
+			</Column>
 			<Column className="m-sponsors__small">
 				<Sponsor name="Thür Getränke" link="http://thuergetraenke.ch" image="thuergetranke.jpg" />
 			</Column>
