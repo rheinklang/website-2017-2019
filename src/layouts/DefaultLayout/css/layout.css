@@ -1,0 +1,17 @@
+.o-header {
+  position: fixed;
+  height: 70px;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: #0b363b;
+  z-index: 100; }
+
+.o-header__logo {
+  margin: 10px 0; }
+
+.h-layout {
+  position: relative; }
+
+.h-layout__content {
+  margin-top: 70px; }

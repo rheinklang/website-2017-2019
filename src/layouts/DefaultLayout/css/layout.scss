@@ -1,0 +1,9 @@
+@import '../../../components/organisms/Header/css/header.scss';
+
+.h-layout {
+	position: relative;
+}
+
+.h-layout__content {
+	margin-top: $header-size;
+}

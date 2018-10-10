@@ -1,4 +1,13 @@
-.m-grid {
+$constraint-width: 1200px;
+$constraint-spacing: 10px;
+
+.h-constraint {
+	max-width: #{$constraint-width + ($constraint-spacing * 2)};
+	margin: 0 auto;
+	padding: 0 10px;
+}
+
+.o-grid {
 	width: 100%;
 	max-width: 100%;
 	display: flex;
@@ -6,25 +15,25 @@
 	flex-direction: row;
 }
 
-.m-grid__column {
+.o-grid__column {
 	align-self: auto;
 	flex-grow: 1;
 	flex-shrink: 1;
 
-	&.m-grid__column--space-sm {
+	&.o-grid__column--space-sm {
 		padding: 15px;
 	}
 
-	&.m-grid__column--space-md {
+	&.o-grid__column--space-md {
 		padding: 20px;
 	}
 }
 
 @media all and (max-width: 500px) {
-	.m-grid {
+	.o-grid {
 		display: block;
 
-		.m-grid__column {
+		.o-grid__column {
 			flex-grow: 0;
 		}
 	}

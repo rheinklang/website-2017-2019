@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { stringify } from 'qs';
+import { IDirectusResponse } from '../../schemes/DirectusResponse';
 
 interface IRemoteInstanceOptions {
 	accessToken: string;
@@ -23,19 +24,6 @@ interface IRemoteError {
 	response: {
 		data: any;
 	};
-}
-
-export interface IDirectusResponse<T = any> {
-	meta: {
-		Deleted: number;
-		Draft: number;
-		Published: number;
-		table: string;
-		total: number;
-		total_entries: number;
-		type: string;
-	};
-	data: T;
 }
 
 const customHttpClient = axios.create({
@@ -275,7 +263,7 @@ class RemoteInstance {
 							encode: false,
 						}),
 				})
-				.then(res => resolve(res.data))
+				.then(res => resolve(res ? res.data : {}))
 				.catch(err => this.onCaughtError(reject, err));
 		});
 	}

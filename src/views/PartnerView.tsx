@@ -1,7 +1,8 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
+import { Loader } from '../components/atoms/Loader';
 import { PartnerStore } from '../models/PartnerStore';
-import { IPartner } from '../models/schemes/Partner';
+import { IPartnerSchema } from '../schemes/Partner';
 
 interface IPartnerViewProps {
 	store: PartnerStore;
@@ -10,13 +11,15 @@ interface IPartnerViewProps {
 @observer
 export class PartnerView extends React.Component<IPartnerViewProps> {
 	public render() {
-		const { partners } = this.props.store;
-		// tslint:disable-next-line
-		console.log(partners);
+		const { partners, loaded } = this.props.store;
+
+		if (!loaded) {
+			return <Loader />;
+		}
 
 		return (
 			<>
-				{partners.map((partner: IPartner) => {
+				{partners.map((partner: IPartnerSchema) => {
 					return (
 						<div key={partner.id}>
 							<h2>{partner.name}</h2>

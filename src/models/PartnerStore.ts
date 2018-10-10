@@ -1,16 +1,23 @@
 import { computed, observable, runInAction } from 'mobx';
+import { IPartnerSchema } from '../schemes/Partner';
 import { PartnerAPI } from '../service/partner';
-import { IPartner } from './schemes/Partner';
 
 export class PartnerStore {
-	@observable private partnerList: IPartner[] = [];
+	@observable private partnerList: IPartnerSchema[] = [];
 
-	constructor() {
-		this.fetchPartners();
+	constructor(forceFetchAPI: boolean = false) {
+		if (this.partnerList.length === 0 || forceFetchAPI) {
+			this.fetchPartners();
+		}
 	}
 
 	@computed
-	public get partners(): IPartner[] {
+	public get loaded(): boolean {
+		return this.partnerList.length > 0;
+	}
+
+	@computed
+	public get partners(): IPartnerSchema[] {
 		return this.partnerList;
 	}
 

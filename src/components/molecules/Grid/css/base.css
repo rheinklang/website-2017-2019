@@ -1,21 +1,26 @@
-.m-grid {
+.h-constraint {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 10px; }
+
+.o-grid {
   width: 100%;
   max-width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: row; }
 
-.m-grid__column {
+.o-grid__column {
   align-self: auto;
   flex-grow: 1;
   flex-shrink: 1; }
-  .m-grid__column.m-grid__column--space-sm {
+  .o-grid__column.o-grid__column--space-sm {
     padding: 15px; }
-  .m-grid__column.m-grid__column--space-md {
+  .o-grid__column.o-grid__column--space-md {
     padding: 20px; }
 
 @media all and (max-width: 500px) {
-  .m-grid {
+  .o-grid {
     display: block; }
-    .m-grid .m-grid__column {
+    .o-grid .o-grid__column {
       flex-grow: 0; } }

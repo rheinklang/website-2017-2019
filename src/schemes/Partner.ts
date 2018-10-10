@@ -1,8 +1,8 @@
-import { IDirectusResponse } from '../../service/shared/directus';
 import { IDirectusImage } from './DirectusImage';
 import { IDirectusModel } from './DirectusModel';
+import { IDirectusResponse } from './DirectusResponse';
 
-export interface IPartner extends IDirectusModel {
+export interface IPartnerSchema extends IDirectusModel {
 	homepage: string;
 	name: string;
 	identifier: string;

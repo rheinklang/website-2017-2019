@@ -6,17 +6,27 @@ export interface IAbstractGridProps {
 	className?: string;
 }
 
-export interface IGridColumnProps {
+export interface IGridColumnProps extends IAbstractGridProps {
 	spacing?: 'xs' | 'sm' | 'md' | 'lg';
 }
 
-export const Grid = ({ children, className }: IAbstractGridProps) => (
-	<div className={'m-grid' + (className ? ' ' + className : '')}>{children || null}</div>
+export interface IGridProps extends IAbstractGridProps {
+	wrapWithConstaint?: boolean;
+}
+
+export const Constraint = ({ children, className }: IAbstractGridProps) => (
+	<div className={'h-constraint' + (className ? ` ${className}` : '')}>{children || null}</div>
 );
 
-export const Column = ({ children, spacing, className }: IAbstractGridProps & IGridColumnProps) => (
+export const Grid = ({ children, className, wrapWithConstaint = false }: IGridProps) => {
+	const content = <div className={'o-grid' + (className ? ' ' + className : '')}>{children || null}</div>;
+
+	return wrapWithConstaint ? <Constraint>{content}</Constraint> : content;
+};
+
+export const Column = ({ children, spacing, className }: IGridColumnProps) => (
 	<div
-		className={`m-grid__column${spacing ? ` m-grid__column--space-${spacing}` : ''}${
+		className={`o-grid__column${spacing ? ` m-grid__column--space-${spacing}` : ''}${
 			className ? ' ' + className : ''
 		}`}
 	>

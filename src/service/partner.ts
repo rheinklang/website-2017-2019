@@ -1,6 +1,6 @@
-import { IPartner } from '../models/schemes/Partner';
+import { IPartnerSchema } from '../schemes/Partner';
 import directus from './shared/directus';
 
 export const PartnerAPI = {
-	getPartners: () => directus.getItems<IPartner[]>('partner'),
+	getPartners: () => directus.getItems<IPartnerSchema[]>('partner'),
 };
