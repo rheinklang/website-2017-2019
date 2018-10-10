@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { routeStore } from '../../../models';
+import { assetStore } from '../../../models/index';
+import { StaticAsset } from '../../atoms/StaticAsset';
 import { Column, Constraint, Grid } from '../../molecules/Grid';
 import { MainNavigation } from '../../molecules/MainNavigation';
 import './css/header.css';
@@ -11,7 +13,7 @@ export class Header extends React.Component {
 				<Constraint>
 					<Grid>
 						<Column>
-							<img className="o-header__logo" src="http://placehold.it/50x50" alt="logo" />
+							<StaticAsset store={assetStore} name="RHEINKLANG_LOGO_TRANSPARENT" />
 						</Column>
 						<Column>
 							<MainNavigation routeStore={routeStore} />

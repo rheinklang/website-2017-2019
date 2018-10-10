@@ -14,18 +14,28 @@ export class MainNavigation extends React.Component<IMainNavigationProps> {
 	private get links(): ILinkProps[] {
 		const routeStore = this.props.routeStore;
 
-		return [routeStore.getRouteByID(RouteReactID.HOME)].map(
+		if (!routeStore.loaded) {
+			return [];
+		}
+
+		return [
+			routeStore.getRouteByID(RouteReactID.HOME),
+			routeStore.getRouteByID(RouteReactID.IMPRESSIONS),
+			routeStore.getRouteByID(RouteReactID.ABOUT_US),
+			routeStore.getRouteByID(RouteReactID.NEWSLETTER),
+			routeStore.getRouteByID(RouteReactID.CONTACT),
+		].map(
 			(scheme: IRouteScheme): ILinkProps => ({
 				href: scheme.slug,
 				internal: true,
 				openInNewWindow: false,
-				text: scheme.title,
+				text: scheme.navigation_title || scheme.title, // FIXME: remove fallback
 			})
 		);
 	}
+
 	public render() {
 		// tslint:disable-next-line
-		console.log(RouteReactID.HOME, this.props.routeStore.getRouteByID(RouteReactID.HOME), this.props.routeStore);
 		return <LinkList links={this.links} modifier="main-navigation" />;
 	}
 }

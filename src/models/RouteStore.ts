@@ -9,7 +9,7 @@ export enum RouteReactID {
 	LINK_TO = 'link-to',
 	ABOUT_US = 'about-us',
 	PARTNER_BY_ID = 'partner-by-id',
-	NEWSLETTER = 'newlsetter',
+	NEWSLETTER = 'newsletter',
 	CONTACT = 'contact',
 	IMPRESSIONS = 'impressions',
 	IMPRESSION_BY_ID = 'impression-by-id',
@@ -38,12 +38,13 @@ export class RouteStore {
 
 	public getRouteByID(id: RouteReactID): IRouteScheme {
 		return (
-			this.routeList.find((route: IRouteScheme) => route.react_id === id) || {
+			this.routeList.find((route: IRouteScheme) => route.react_key === id) || {
 				dynamic_route: false,
 				hidden_service: false,
 				id: 'not-found',
+				navigation_title: '',
 				og_image: null,
-				react_id: RouteReactID.ERROR,
+				react_key: RouteReactID.ERROR,
 				seo_description: '',
 				seo_title: 'Not found',
 				slug: '/error',
