@@ -1,4 +1,4 @@
-import { computed, observable, runInAction } from 'mobx';
+import { action, computed, observable, runInAction } from 'mobx';
 import { IDirectusMetaResponse } from '../schemes/DirectusResponse';
 import { IRouteScheme } from '../schemes/Route';
 import { RouteAPI } from '../service/route';
@@ -36,7 +36,11 @@ export class RouteStore {
 		return this.metaData;
 	}
 
+	@action.bound
 	public getRouteByID(id: RouteReactID): IRouteScheme {
+		// tslint:disable-next-line
+		console.log('getRouteByID: %s', id, this.routeList.find((route: IRouteScheme) => route.react_key === id));
+
 		return (
 			this.routeList.find((route: IRouteScheme) => route.react_key === id) || {
 				dynamic_route: false,
@@ -55,15 +59,16 @@ export class RouteStore {
 		);
 	}
 
-	@computed
+	@computed.struct
 	public get routes(): IRouteScheme[] {
 		return this.routeList;
 	}
 
+	@action.bound
 	public async fetchRoutes() {
 		const routes = await RouteAPI.getRoutes();
 		// tslint:disable-next-line
-		console.log('routes', routes.data);
+		console.log('routes set!');
 
 		runInAction(() => {
 			this.routeList = routes.data;

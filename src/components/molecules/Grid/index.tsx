@@ -4,6 +4,7 @@ import './css/base.css';
 export interface IAbstractGridProps {
 	children: any;
 	className?: string;
+	preserveMobile?: boolean;
 }
 
 export interface IGridColumnProps extends IAbstractGridProps {
@@ -18,8 +19,16 @@ export const Constraint = ({ children, className }: IAbstractGridProps) => (
 	<div className={'h-constraint' + (className ? ` ${className}` : '')}>{children || null}</div>
 );
 
-export const Grid = ({ children, className, wrapWithConstaint = false }: IGridProps) => {
-	const content = <div className={'o-grid' + (className ? ' ' + className : '')}>{children || null}</div>;
+export const Grid = ({ children, className, wrapWithConstaint = false, preserveMobile = false }: IGridProps) => {
+	const content = (
+		<div
+			className={
+				'o-grid' + (className ? ' ' + className : '') + (preserveMobile ? ' o-grid--preserve-mobile' : '')
+			}
+		>
+			{children || null}
+		</div>
+	);
 
 	return wrapWithConstaint ? <Constraint>{content}</Constraint> : content;
 };

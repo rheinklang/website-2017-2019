@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { ILinkProps, Link } from '../link';
+import { ILinkProps, Link } from '../../atoms/link';
+import './css/link-list.css';
+import './css/modifiers/main-navigation.css';
 
 export interface ILinkListProps {
 	links: ILinkProps[];
@@ -9,7 +11,11 @@ export interface ILinkListProps {
 export const LinkList = ({ links, modifier }: ILinkListProps) => (
 	<ul className={'m-link-list' + (modifier ? ` m-link-list--${modifier}` : '')}>
 		{links.map((link: ILinkProps, index: number) => {
-			return <Link key={index} {...link} />;
+			return (
+				<li className="m-link-list__item" key={index + link.href}>
+					<Link {...link} />
+				</li>
+			);
 		})}
 	</ul>
 );

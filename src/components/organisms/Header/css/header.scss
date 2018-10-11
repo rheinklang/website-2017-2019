@@ -1,18 +1,15 @@
 @import '../../../../assets/css/z-index.scss';
 
-$header-size: 70px;
-$logo-size: 50px;
+$header-size: 120px;
+$logo-size: 100px;
 
 .o-header {
-	position: fixed;
 	height: $header-size;
-	left: 0;
-	right: 0;
-	top: 0;
 	background-color: #0b363b;
 	@include z-index(header);
 }
 
-.o-header__logo {
+.o-header__brand .a-image {
 	margin: #{($header-size - $logo-size) / 2} 0;
+	width: $logo-size;
 }

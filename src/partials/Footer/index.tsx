@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { Footer as FooterComponent } from '../../components/organisms/Footer';
 export const Footer = () => {
-	return <h2>Footer</h2>;
+	return <FooterComponent />;
 };

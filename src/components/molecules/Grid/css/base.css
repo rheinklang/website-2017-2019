@@ -20,7 +20,7 @@
     padding: 20px; }
 
 @media all and (max-width: 500px) {
-  .o-grid {
+  .o-grid:not(.o-grid--preserve-mobile) {
     display: block; }
-    .o-grid .o-grid__column {
+    .o-grid:not(.o-grid--preserve-mobile) .o-grid__column {
       flex-grow: 0; } }

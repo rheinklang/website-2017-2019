@@ -30,7 +30,7 @@ $constraint-spacing: 10px;
 }
 
 @media all and (max-width: 500px) {
-	.o-grid {
+	.o-grid:not(.o-grid--preserve-mobile) {
 		display: block;
 
 		.o-grid__column {

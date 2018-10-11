@@ -321,15 +321,20 @@ class RemoteInstance {
 
 export { RemoteInstance };
 
-const defaultRemoteConnection = new RemoteInstance({
+const defaultRemoteConnectionSettings = {
 	accessToken: '99QW5PGooTCIGIYXzZPpkO45LSbe2mAR',
 	accessTokenType: 'header',
 	maxFileSize: 10e10,
 	url: 'https://cms.rheinklang-festival.ch',
 	version: '1.1',
-});
+};
+const defaultRemoteConnection = new RemoteInstance(defaultRemoteConnectionSettings);
 
 // tslint:disable-next-line
-console.log(defaultRemoteConnection);
+console.info(
+	'Connection set to %s (v%s)',
+	defaultRemoteConnectionSettings.url,
+	defaultRemoteConnectionSettings.version
+);
 
 export default defaultRemoteConnection;

@@ -1,9 +1,25 @@
 @import '../../../components/organisms/Header/css/header.scss';
+@import '../../../components/organisms/Footer/css/footer.scss';
 
 .h-layout {
 	position: relative;
 }
 
 .h-layout__content {
-	margin-top: $header-size;
+	margin: $header-size auto $footer-size auto;
+}
+
+.h-layout__header {
+	position: fixed;
+	height: $header-size;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+
+.h-layout__footer {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
 }

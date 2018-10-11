@@ -1,0 +1,25 @@
+@import '../../../../organisms/Header/css/header.scss';
+@import '../../../../../assets/css/colors.scss';
+
+.m-link-list.m-link-list--main-navigation {
+	height: $header-size;
+
+	.m-link-list__item {
+		font-weight: 100;
+		letter-spacing: 0.5rem;
+		text-transform: uppercase;
+		line-height: $header-size;
+		float: left;
+		color: $dusty-white;
+		font-size: 0.7rem;
+		padding: 0 20px;
+
+		&:first-child {
+			padding-left: 0;
+		}
+
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+}

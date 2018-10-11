@@ -17,11 +17,13 @@ export class StaticAsset extends React.Component<IStaticAssetProps> {
 			return null;
 		}
 
-		// tslint:disable-next-line
-		console.log(asset.blob.data);
-
 		return (
-			<img src={`https://cms.rheinklang-festival.ch${asset.blob.data.url}`} alt={asset.alt} title={asset.title} />
+			<img
+				className="a-image a-image--static-asset"
+				src={`https://cms.rheinklang-festival.ch${asset.blob.data.url}`}
+				alt={asset.alt}
+				title={asset.title}
+			/>
 		);
 	}
 }

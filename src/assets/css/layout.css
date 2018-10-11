@@ -1,6 +1,14 @@
 .h-hide-on-mobile {
   display: none; }
 
+.h-pull-right {
+  float: right; }
+
+.h-pull-left {
+  float: left; }
+
 @media all and (min-width: 500px) {
   .h-hide-on-mobile {
-    display: initial; } }
+    display: initial; }
+  .h-hide-on-desktop {
+    display: none; } }

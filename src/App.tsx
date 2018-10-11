@@ -3,7 +3,6 @@ import './assets/css/index.css';
 import { Separator } from './components/abstract/Separator';
 import { AnimatedLogo } from './components/atoms/AnimatedLogo';
 import { Countdown } from './components/atoms/Countdown';
-import { Footer } from './components/atoms/Footer';
 import { TourDates } from './components/atoms/TourDates';
 // import { Loader } from './components/atoms/Loader';
 // import { AvatarTree } from './components/molecules/AvatarTree';
@@ -74,7 +73,6 @@ class App extends React.Component<any, IAppState> {
 				>
 					<SocialMediaLinks />
 				</Section>
-				<Footer />
 			</main>
 		);
 	}

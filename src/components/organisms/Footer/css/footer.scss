@@ -1,0 +1,28 @@
+@import '../../../../assets/css/colors.scss';
+
+$footer-size: 50px;
+
+.o-footer {
+	background-color: $sea-green;
+	padding: 5px;
+}
+
+.o-footer__text {
+	text-transform: uppercase;
+	color: $dusty-white;
+	font-size: 0.55rem;
+	letter-spacing: 0.1rem;
+	font-weight: 300;
+	margin: 0;
+	text-align: center;
+}
+
+@media all and (min-width: 500px) {
+	.o-footer {
+		padding: 15px;
+	}
+
+	.o-footer__text {
+		text-align: left;
+	}
+}

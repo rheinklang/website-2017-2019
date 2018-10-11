@@ -3,7 +3,7 @@ import * as React from 'react';
 import { RouteReactID, RouteStore } from '../../../models/RouteStore';
 import { IRouteScheme } from '../../../schemes/Route';
 import { ILinkProps } from '../../atoms/link';
-import { LinkList } from '../../atoms/LinkList';
+import { LinkList } from '../../molecules/LinkList';
 
 export interface IMainNavigationProps {
 	routeStore: RouteStore;
@@ -36,6 +36,10 @@ export class MainNavigation extends React.Component<IMainNavigationProps> {
 
 	public render() {
 		// tslint:disable-next-line
-		return <LinkList links={this.links} modifier="main-navigation" />;
+		return (
+			<div className="m-main-navigation h-pull-right">
+				<LinkList links={this.links} modifier="main-navigation" />
+			</div>
+		);
 	}
 }
