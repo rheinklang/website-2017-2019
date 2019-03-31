@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icon } from '../../atoms/Icon';
-import './css/base.css';
+import './css/base.scss';
 
 export const SocialMediaLinks = () => {
 	return (

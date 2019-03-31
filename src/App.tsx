@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './assets/css/index.css';
+import './assets/css/index.scss';
 import { Separator } from './components/abstract/Separator';
 import { AnimatedLogo } from './components/atoms/AnimatedLogo';
 import { Countdown } from './components/atoms/Countdown';
@@ -11,7 +11,9 @@ import { Column, Grid } from './components/molecules/Grid';
 import { PresaleInfo } from './components/molecules/PresaleInfo/index';
 import { Section } from './components/molecules/Section';
 import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
-import { Sponsors } from './components/molecules/Sponsors';
+// import { Sponsors } from './components/molecules/Sponsors';
+import { GoogleAnalytics } from './partials/GoogleAnalytics';
+import { GoogleTagManager } from './partials/GoogleTagManager';
 
 export interface IAppState {
 	display: boolean;
@@ -23,6 +25,8 @@ class App extends React.Component<any, IAppState> {
 	};
 
 	public render() {
+		this.track();
+
 		return (
 			<main className="o-react-app">
 				<Section id="logo">
@@ -62,9 +66,9 @@ class App extends React.Component<any, IAppState> {
 						</Column>
 					</Grid>
 				</Section>
-				<Section id="sponsors" colorize="white" title="Unsere Unterstützung">
+				{/* <Section id="sponsors" colorize="white" title="Unsere Unterstützung">
 					<Sponsors />
-				</Section>
+				</Section> */}
 				<Separator modifier="dark" />
 				<Section
 					id="social"
@@ -75,8 +79,18 @@ class App extends React.Component<any, IAppState> {
 					<SocialMediaLinks />
 				</Section>
 				<Footer />
+				<GoogleAnalytics />
+				<GoogleTagManager />
 			</main>
 		);
+	}
+
+	private track() {
+		(window as any).dataLayer.push({
+			event: 'VirtualPageview',
+			virtualPageTitle: document.title,
+			virtualPageURL: window.location.href,
+		});
 	}
 }
 

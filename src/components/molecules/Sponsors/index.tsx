@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Sponsor } from '../../atoms/Sponsor';
 import { Column, Grid } from '../Grid';
-import './css/base.css';
+import './css/base.scss';
 
 // const x = [
 // 	{
@@ -69,6 +69,9 @@ export const Sponsors = () => (
 		<Grid className="m-sponsors__row">
 			<Column className="m-sponsors__small">
 				<Sponsor name="Thür Getränke" link="http://thuergetraenke.ch" image="thuergetranke.jpg" />
+			</Column>
+			<Column className="m-sponsors__small">
+				<Sponsor name="Sonnebräu" link="https://sonnenbraeu.ch/" image="sonnenbrau.png" />
 			</Column>
 		</Grid>
 	</div>

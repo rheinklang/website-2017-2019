@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/bit.css';
+import './css/bit.scss';
 
 export const TourDates = () => {
 	return (

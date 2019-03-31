@@ -1,9 +1,10 @@
 .m-grid {
-  width: 100%;
+  width: auto;
   max-width: 100%;
   display: flex;
   justify-content: center;
-  flex-direction: row; }
+  flex-direction: row;
+  flex-wrap: wrap; }
 
 .m-grid__column {
   align-self: auto;
@@ -18,4 +19,5 @@
   .m-grid {
     display: block; }
     .m-grid .m-grid__column {
+      margin: 60px 0;
       flex-grow: 0; } }

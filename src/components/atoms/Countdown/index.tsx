@@ -1,6 +1,6 @@
 import * as React from 'react';
 import CountdownWidget from 'react-countdown-now';
-import './css/base.css';
+import './css/base.scss';
 
 const FESTIVAL_DATE = new Date('2018-08-18T13:00:00Z');
 

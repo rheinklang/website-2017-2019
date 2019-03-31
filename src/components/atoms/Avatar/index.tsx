@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { AsyncImage } from '../../abstract/AsyncImage/index';
+import { AsyncImage } from '../../abstract/AsyncImage';
 
-import './css/base.css';
-import './css/primary.css';
+import './css/base.scss';
+import './css/primary.scss';
 
 export interface IAvatarProps {
 	name: string;

@@ -1,5 +1,7 @@
 .bit-widget {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important; }
+  .bit-widget .bit-top-track-button {
+    display: none !important; }
   .bit-widget .bit-logo-container {
     display: none; }
   .bit-widget .bit-event-list-title {

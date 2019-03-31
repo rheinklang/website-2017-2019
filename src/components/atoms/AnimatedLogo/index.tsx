@@ -2,8 +2,8 @@ import * as React from 'react';
 import foreground from './assets/foreground.png';
 import flower from './assets/layer-flower.png';
 import leaf from './assets/layer-leaf.png';
-import './css/animations.css';
-import './css/base.css';
+import './css/animations.scss';
+import './css/base.scss';
 
 export interface IAnimatedLogoProps {
 	modifier?: string;

@@ -1,21 +1,22 @@
 import * as React from 'react';
-import { Icon } from '../../atoms/Icon';
-import { Column, Grid } from '../Grid/index';
-import './css/base.css';
+// import { Icon } from '../../atoms/Icon';
+import { Column, Grid } from '../Grid';
+import './css/base.scss';
 
 export const PresaleInfo = () => (
 	<Grid className="m-presale">
-		<Column className="m-presale__description">
-			<p>
+		<Column className="m-presale__description" spacing="sm">
+			<p>Mehr Informationen in Kürze!</p>
+			{/* <p>
 				Du hast bereits entschieden, dass du am 18. August 2018 am Rheinklang Festival abfeiern wirst und dazu
 				willst du auch noch vergünstigt auf das Gelände gelangen? Kein Problem!
 			</p>
 			<p>
 				Besuche einfach und bequem eine unserer unten aufgelisteten Vorverkaufststellen in deiner Nähe und
 				besorg dir jetzt schon dein Ticket mit Early Bird Rabatt ab!
-			</p>
+			</p> */}
 		</Column>
-		<Column className="m-presale__stations">
+		{/* <Column className="m-presale__stations" spacing="sm">
 			<ul className="m-presale__stations-list">
 				<li>
 					<a
@@ -63,6 +64,6 @@ export const PresaleInfo = () => (
 					</a>
 				</li>
 			</ul>
-		</Column>
+		</Column> */}
 	</Grid>
 );

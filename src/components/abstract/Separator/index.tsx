@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/base.css';
+import './css/base.scss';
 
 interface ISeparatorProps {
 	modifier?: string;
@@ -11,7 +11,7 @@ export const Separator = ({ modifier, skew }: ISeparatorProps) => {
 		<div
 			className={`h-separator${modifier ? ` h-separator--${modifier}` : ''}${
 				skew ? ` h-separator--skew-${skew}` : ''
-			}`}
+				}`}
 		/>
 	);
 };

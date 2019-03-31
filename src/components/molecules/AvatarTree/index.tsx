@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Avatar } from '../../atoms/Avatar';
-import { Column, Grid } from '../../molecules/Grid';
-import './css/base.css';
+import { Column, Grid } from '../Grid';
+import './css/base.scss';
 
 export const AvatarTree = () => {
 	return (

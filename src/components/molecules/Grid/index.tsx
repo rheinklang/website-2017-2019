@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/base.css';
+import './css/base.scss';
 
 export interface IAbstractGridProps {
 	children: any;
@@ -18,7 +18,7 @@ export const Column = ({ children, spacing, className }: IAbstractGridProps & IG
 	<div
 		className={`m-grid__column${spacing ? ` m-grid__column--space-${spacing}` : ''}${
 			className ? ' ' + className : ''
-		}`}
+			}`}
 	>
 		{children || null}
 	</div>

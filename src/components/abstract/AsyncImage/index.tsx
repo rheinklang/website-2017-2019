@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './css/base.css';
+import './css/base.scss';
 
 export interface IAsyncImageProps {
 	path: string;
@@ -16,10 +16,10 @@ export interface IAsyncImageState {
 export class AsyncImage extends React.Component<IAsyncImageProps, IAsyncImageState> {
 	public static displayName = 'AsyncImage';
 
-	public defaultProps: IAsyncImageProps = {
+	public static defaultProps: IAsyncImageProps = {
 		alt: 'image',
 		className: 'a-async-image',
-		path: '',
+		path: '#',
 	};
 
 	public state: IAsyncImageState = {

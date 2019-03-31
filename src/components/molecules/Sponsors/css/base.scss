@@ -5,13 +5,18 @@
 
 		.a-sponsor__image {
 			margin: 0 auto;
-			filter: gray;
-			filter: grayscale(1);
-			transition: all 0.8s ease-in-out;
+		}
 
-			&:hover {
-				filter: none;
-				filter: grayscale(0);
+		@media all and (min-width: 500px) {
+			.a-sponsor__image {
+				filter: gray;
+				filter: grayscale(1);
+				transition: all 0.8s ease-in-out;
+
+				&:hover {
+					filter: none;
+					filter: grayscale(0);
+				}
 			}
 		}
 	}

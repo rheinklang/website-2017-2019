@@ -1,6 +1,6 @@
 import * as React from 'react';
-import './css/base.css';
-import './css/variations.css';
+import './css/base.scss';
+import './css/variations.scss';
 
 export interface ISectionProps {
 	children: any;
@@ -16,7 +16,7 @@ export const Section = ({ id, colorize, title, description, children, skew }: IS
 		<section
 			className={`m-section${id ? ` m-section--${id}` : ''}${skew ? ` m-section--skew-${skew}` : ''}${
 				colorize ? ` h-colorize--${colorize}` : ''
-			}`}
+				}`}
 		>
 			<div className="m-section__slope">
 				<article className="m-section__article">

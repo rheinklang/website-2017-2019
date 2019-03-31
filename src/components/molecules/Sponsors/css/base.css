@@ -2,13 +2,15 @@
   display: block;
   margin: 20px; }
   .m-sponsors .a-sponsor .a-sponsor__image {
-    margin: 0 auto;
-    filter: gray;
-    filter: grayscale(1);
-    transition: all 0.8s ease-in-out; }
-    .m-sponsors .a-sponsor .a-sponsor__image:hover {
-      filter: none;
-      filter: grayscale(0); }
+    margin: 0 auto; }
+  @media all and (min-width: 500px) {
+    .m-sponsors .a-sponsor .a-sponsor__image {
+      filter: gray;
+      filter: grayscale(1);
+      transition: all 0.8s ease-in-out; }
+      .m-sponsors .a-sponsor .a-sponsor__image:hover {
+        filter: none;
+        filter: grayscale(0); } }
 
 .m-sponsors .m-sponsors__row {
   margin: 30px 0; }

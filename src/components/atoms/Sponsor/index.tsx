@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { AsyncImage } from '../../abstract/AsyncImage/index';
-import './css/base.css';
+import { AsyncImage } from '../../abstract/AsyncImage';
+import './css/base.scss';
 
 export interface ISponsorProps {
 	name: string;
