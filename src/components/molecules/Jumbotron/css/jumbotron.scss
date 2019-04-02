@@ -1,0 +1,135 @@
+@import '../../../../assets/css/viewport.scss';
+
+.m-jumbotron {
+	min-height: 200px;
+	padding: 100px 0;
+	width: 100%;
+
+	@include mobile {
+		padding: 50px 0 0 0;
+		min-height: auto;
+	}
+}
+
+// ================ Edge drain animation
+@keyframes opacity-pulse {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.5;
+	}
+}
+
+@mixin color-pulse($name, $r, $g, $b) {
+	@keyframes #{$name} {
+		0% {
+			fill: darken($color: rgb($r,$g,$b), $amount: 0);
+		}
+		70% {
+			fill: darken($color: rgb($r,$g,$b), $amount: 2);
+		}
+		100% {
+			fill: darken($color: rgb($r,$g,$b), $amount: 4);
+		}
+	}
+}
+
+@include color-pulse('edge-1', 246, 206, 100);
+@include color-pulse('edge-2', 14, 53, 54);
+@include color-pulse('edge-3', 110, 143, 66);
+@include color-pulse('edge-4', 216, 104, 123);
+
+.m-jumbotron {
+	#edge-1 {
+		animation: edge-1 2s infinite, opacity-pulse 2s infinite;
+		animation-direction: alternate;
+	}
+
+	#edge-2 {
+		animation: edge-2 2s infinite, opacity-pulse 2s infinite;
+		animation-delay: 2s;
+		animation-direction: alternate;
+	}
+
+	#edge-3 {
+		animation: edge-3 2s infinite, opacity-pulse 2s infinite;
+		animation-delay: 4s;
+		animation-direction: alternate;
+	}
+
+	#edge-4 {
+		animation: edge-4 2s infinite, opacity-pulse 2s infinite;
+		animation-delay: 6s;
+		animation-direction: alternate;
+	}
+}
+
+// =============== Typo drain animation
+
+$typo-anim-duration: 2s;
+
+@keyframes text-opacity-pulse {
+	0% {
+		opacity: 1;
+		color: #000000;
+	}
+	100% {
+		opacity: 0.1;
+		color: #efefef;
+	}
+}
+
+.m-jumbotron {
+	#RHEINKLANG,
+	#RHEINKLANG-Copy,
+	#RHEINKLANG-Copy-2,
+	#RHEINKLANG-Copy-3 {
+		animation-direction: alternate;
+	}
+
+	#RHEINKLANG {
+		animation: text-opacity-pulse $typo-anim-duration infinite;
+		animation-delay: #{$typo-anim-duration - 3s};
+		animation-direction: alternate;
+	}
+
+	#RHEINKLANG-Copy {
+		animation: text-opacity-pulse $typo-anim-duration infinite;
+		animation-delay: #{$typo-anim-duration - 2s};
+		animation-direction: alternate;
+	}
+
+	#RHEINKLANG-Copy-2 {
+		animation: text-opacity-pulse $typo-anim-duration infinite;
+		animation-delay: #{$typo-anim-duration - 1s};
+		animation-direction: alternate;
+	}
+
+	#RHEINKLANG-Copy-3 {
+		animation: text-opacity-pulse $typo-anim-duration infinite;
+		animation-delay: #{$typo-anim-duration - 0s};
+		animation-direction: alternate;
+	}
+}
+
+// ================== Colored overlay animation
+@keyframes color-line-blender {
+	0% {
+		opacity: 1;
+	}
+	70% {
+		opacity: 0.1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@for $cl from 1 to 9 {
+	#cl-#{$cl} {
+		animation: color-line-blender 0.8s infinite;
+		animation-delay: #{$cl * 0.357}s;
+		animation-direction: alternate;
+	}
+}

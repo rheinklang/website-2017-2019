@@ -1,22 +1,45 @@
 import * as React from 'react';
+import * as ReactGA from 'react-ga';
 import './assets/css/index.scss';
-import { Separator } from './components/abstract/Separator';
-import { AnimatedLogo } from './components/atoms/AnimatedLogo';
-import { Countdown } from './components/atoms/Countdown';
+// import { Separator } from './components/abstract/Separator';
+// import { AnimatedLogo } from './components/atoms/AnimatedLogo';
+// import { Countdown } from './components/atoms/Countdown';
 import { Footer } from './components/atoms/Footer';
 import { TourDates } from './components/atoms/TourDates';
+import { Article } from './components/molecules/Article';
+// import { TourDates } from './components/atoms/TourDates';
 // import { Loader } from './components/atoms/Loader';
 // import { AvatarTree } from './components/molecules/AvatarTree';
-import { Column, Grid } from './components/molecules/Grid';
-import { PresaleInfo } from './components/molecules/PresaleInfo/index';
+// import { Column, Grid } from './components/molecules/Grid';
+import { Jumbotron } from './components/molecules/Jumbotron';
 import { Section } from './components/molecules/Section';
+// import { PresaleInfo } from './components/molecules/PresaleInfo/index';
+// import { Section } from './components/molecules/Section';
+// import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
 import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
+import { FacebookWidget } from './components/widgets/Facebook';
 // import { Sponsors } from './components/molecules/Sponsors';
 import { GoogleAnalytics } from './partials/GoogleAnalytics';
 import { GoogleTagManager } from './partials/GoogleTagManager';
 
+const IS_PROD = process.env.NODE_ENV === 'production';
+
 export interface IAppState {
 	display: boolean;
+}
+
+ReactGA.initialize('UA-57645783-4', {
+	debug: !IS_PROD,
+	gaOptions: { cookieDomain: 'none' }
+});
+ReactGA.pageview(window.location.pathname + window.location.search);
+
+if(!IS_PROD) {
+	// tslint:disable-next-line:variable-name
+	const _gaq: any[] = (window as any)._gaq || [];
+	_gaq.push(["_setAccount", "UA-1234-1"]);
+	_gaq.push(["_setDomainName", "none"]);
+	_gaq.push(["_trackPageview"]);
 }
 
 class App extends React.Component<any, IAppState> {
@@ -25,17 +48,28 @@ class App extends React.Component<any, IAppState> {
 	};
 
 	public render() {
-		this.track();
-
 		return (
 			<main className="o-react-app">
-				<Section id="logo">
-					<AnimatedLogo />
+				<Jumbotron />
+				<Section colorize="dark-turquise">
+					TICKETING HERE
 				</Section>
-				<Section id="tour-dates" colorize="red" title="Tourdaten">
+				<div className="container">
+					<div className="row">
+						<Article title="Liebe zum Detail" image="liebe-zum-detail.jpg" text={["Das Team kümmert sich beim Event nicht nur um die Musik, sondern um jede Feinheit die das Festival zu dem macht, was es ist"]} />
+						<Article title="Regional" image="events-aus-der-region.jpg" text={["Wir setzen auf Regionalität! Unsere Künstler, Lieferanten und Mitglieder stammen alle aus der Region."]} />
+						<Article title="Zusammen" image="gemuetlich-zusammen.jpg" text={["Wir wollen eine Atmosphäre schaffen, in der ihr euch als Gruppe wohl fühlt und euch ausleben könnt."]} />
+						<Article title="Für Jung und Alt" image="jung-und-alt.jpg" text={["Das Festival ist für Jung und Alt geeignet und bietet für jeden das gewisse etwas."]} />
+						<Article title="Feeling" image="abend-crowd.jpg" text={["tbd."]} />
+					</div>
+				</div>
+				{/* <Section id="logo">
+					<AnimatedLogo />
+				</Section> */}
+				<Section id="tour-dates" colorize="red" title="Weitere Tourdaten">
 					<TourDates />
 				</Section>
-				<Section id="about-us" colorize="green" title="Über uns">
+				{/* <Section id="about-us" colorize="green" title="Über uns">
 					<Grid>
 						<Column spacing="md">
 							<p>
@@ -56,20 +90,20 @@ class App extends React.Component<any, IAppState> {
 							</p>
 						</Column>
 					</Grid>
-					{/* <AvatarTree /> */}
-				</Section>
-				<Section id="countdown" colorize="dark-turquise" title="Es geht schon bald los!">
+					<AvatarTree />
+				</Section> */}
+				{/* <Section id="countdown" colorize="dark-turquise" title="Es geht schon bald los!">
 					<PresaleInfo />
 					<Grid>
 						<Column>
 							<Countdown />
 						</Column>
 					</Grid>
-				</Section>
+				</Section> */}
 				{/* <Section id="sponsors" colorize="white" title="Unsere Unterstützung">
 					<Sponsors />
 				</Section> */}
-				<Separator modifier="dark" />
+				{/* <Separator modifier="dark" /> */}
 				<Section
 					id="social"
 					title="Social Media"
@@ -78,19 +112,13 @@ class App extends React.Component<any, IAppState> {
 				>
 					<SocialMediaLinks />
 				</Section>
+				<br/>
+				<FacebookWidget />
 				<Footer />
 				<GoogleAnalytics />
 				<GoogleTagManager />
 			</main>
 		);
-	}
-
-	private track() {
-		(window as any).dataLayer.push({
-			event: 'VirtualPageview',
-			virtualPageTitle: document.title,
-			virtualPageURL: window.location.href,
-		});
 	}
 }
 

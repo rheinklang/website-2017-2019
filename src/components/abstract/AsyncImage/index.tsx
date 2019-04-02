@@ -6,6 +6,7 @@ export interface IAsyncImageProps {
 	alt: string;
 	className?: string;
 	modifier?: string;
+	props?: object
 }
 
 export interface IAsyncImageState {
@@ -37,6 +38,7 @@ export class AsyncImage extends React.Component<IAsyncImageProps, IAsyncImageSta
 
 		return (
 			<img
+				{...(this.props.props || {})}
 				className={'a-image ' + className + (modifier ? ` ${className}--${modifier}` : '')}
 				src={imagePath}
 				alt={alt || path || 'image'}

@@ -1,7 +1,14 @@
+@import '../../../../assets/css/viewport.scss';
+
 .m-section {
 	width: 100%;
 	padding: 110px 10px;
 	transform: skew(0, 5deg);
+	margin: 90px 0;
+
+	@include mobile {
+		margin: 50px 0;
+	}
 }
 
 .m-section__article {
@@ -41,11 +48,11 @@
 }
 
 body * .m-section:first-of-type {
-	margin-top: 0;
+	// margin-top: 0;
 	padding-top: 90px;
 }
 
 body * .m-section:last-of-type {
-	margin-bottom: 0;
+	// margin-bottom: 0;
 	padding-bottom: 90px;
 }

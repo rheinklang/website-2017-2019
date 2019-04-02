@@ -1,13 +1,30 @@
 import * as React from 'react';
+import * as ReactGA from 'react-ga';
 import { Icon } from '../../atoms/Icon';
 import './css/base.scss';
+
+function trackSocialMediaInteractionHandler(name: string) {
+	return () => {
+		ReactGA.event({
+			action: `Social Media ${name}`,
+			category: 'Social',
+			label: 'Social Media',
+		})
+	}
+}
 
 export const SocialMediaLinks = () => {
 	return (
 		<React.Fragment>
 			<ul className="m-social-media-links">
 				<li className="m-social-media-links__entry">
-					<a href="https://fb.me/rhnklng" target="_blank" rel="noopener noreferrer" title="Facebook">
+					<a
+						href="https://fb.me/rhnklng"
+						target="_blank"
+						rel="noopener noreferrer"
+						title="Facebook"
+						onClick={trackSocialMediaInteractionHandler('Facebook')}
+					>
 						<Icon select="facebook" />
 					</a>
 				</li>
@@ -17,6 +34,7 @@ export const SocialMediaLinks = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 						title="Instagram"
+						onClick={trackSocialMediaInteractionHandler('Instagram')}
 					>
 						<Icon select="instagram" />
 					</a>

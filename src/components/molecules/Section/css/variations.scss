@@ -1,11 +1,18 @@
+@import '../../../../assets/css/viewport.scss';
+
 .m-section {
 	&.h-colorize--red {
-		color: #f8faee;
+		color: #ffffff;
 		background-color: #ed8197;
 	}
 
+	&.h-colorize--black {
+		color: #ffffff;
+		background-color: #000000;
+	}
+
 	&.h-colorize--green {
-		color: #f8faee;
+		color: #ffffff;
 		background-color: #70973d;
 
 		a {
@@ -16,19 +23,25 @@
 	}
 
 	&.h-colorize--white {
-		background-color: #fff;
+		background-color: #ffffff;
 	}
 
 	&.h-colorize--dark-turquise {
-		color: #f8faee;
+		color: #ffffff;
 		background-color: #0b363b;
 
 		a {
-			color: #f8faee;
+			color: #ffffff;
 
 			&:hover {
 				color: #909b59;
 			}
+		}
+	}
+
+	&.m-section--social {
+		@include mobile {
+			margin-bottom: 0;
 		}
 	}
 }

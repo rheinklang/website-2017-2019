@@ -1,6 +1,0 @@
-.h-hide-on-mobile {
-  display: none; }
-
-@media all and (min-width: 500px) {
-  .h-hide-on-mobile {
-    display: initial; } }

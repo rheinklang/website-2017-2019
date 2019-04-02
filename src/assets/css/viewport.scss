@@ -1,0 +1,7 @@
+$mq-mobile: 660px;
+
+@mixin mobile {
+	@media (max-width : $mq-mobile) {
+		@content;
+	}
+}
