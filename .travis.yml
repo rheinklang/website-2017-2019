@@ -1,0 +1,10 @@
+dist: trusty
+language: node_js
+node_js:
+  - 10
+env:
+  - NODE_ENV=production
+before_install:
+  - "npm config set spin false"
+matrix:
+  fast_finish: true
