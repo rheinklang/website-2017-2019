@@ -8,3 +8,5 @@ before_install:
   - "npm config set spin false"
 matrix:
   fast_finish: true
+notifications:
+  slack: rheinklang:BzAHcIwDekK6y8FmuOCPdW4t
