@@ -5,7 +5,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ManifestPlugin = require('webpack-manifest-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
@@ -58,6 +57,30 @@ module.exports = {
 	// We generate sourcemaps in production. This is slow but gives good results.
 	// You can exclude the *.map files from the build during deployment.
 	devtool: shouldUseSourceMap ? 'source-map' : false,
+	// Update performance on 5th of april due bundle size to large
+	// @jbiasi
+	optimization: {
+		nodeEnv: 'production',
+		mangleWasmImports: true,
+		removeAvailableModules: true,
+		splitChunks: {
+			chunks: 'async',
+			maxInitialRequests: 3,
+			automaticNameDelimiter: '~',
+			name: true,
+			cacheGroups: {
+				vendors: {
+					test: /[\\/]node_modules[\\/]/,
+					priority: -10
+				},
+				default: {
+					minChunks: 2,
+					priority: -20,
+					reuseExistingChunk: true
+				}
+			}
+		}
+	},
 	// In production, we only want to load the polyfills and the app code.
 	entry: [require.resolve('./polyfills'), paths.appIndexJs],
 	output: {
@@ -148,16 +171,22 @@ module.exports = {
 					},
 					{
 						test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+						include: [
+							path.resolve(__dirname, '../src/assets/fonts')
+						],
 						use: [{
-							loader: 'file-loader',
+							loader: require.resolve('url-loader'),
 							options: {
-								name: '[name].[hash].[ext]',
-								outputPath: 'fonts/'
+								name: '[name].[hash:8].[ext]',
+								outputPath: 'static/fonts/'
 							}
 						}]
 					},
 					{
 						test: /\.svg$/,
+						exclude: [
+							path.resolve(__dirname, '../src/assets/fonts')
+						],
 						loader: 'svg-inline-loader?classPrefix'
 					},
 					{
@@ -165,7 +194,6 @@ module.exports = {
 						include: paths.appSrc,
 						loader: require.resolve('babel-loader'),
 						options: {
-
 							compact: true,
 						},
 					},
@@ -197,7 +225,7 @@ module.exports = {
 					// use the "style" loader inside the async code so CSS from them won't be
 					// in the main CSS file.
 					{
-						test: /\.(sa|sc|c)ss$/
+						test: /\.(sa|sc|c)ss$/,
 						loader: ExtractTextPlugin.extract(
 							Object.assign(
 								{
@@ -212,7 +240,7 @@ module.exports = {
 											loader: require.resolve('css-loader'),
 											options: {
 												importLoaders: 1,
-												minimize: true,
+												// minimize: true, FIXME: deprecated since v1.x
 												sourceMap: shouldUseSourceMap,
 											},
 										},

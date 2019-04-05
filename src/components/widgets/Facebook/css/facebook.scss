@@ -1,3 +1,18 @@
 .w-facebook {
-	margin: 50px 0;
+	display: block;
+	width: 100%;
+	position: relative;
+	height: 600px;
+}
+
+.w-facebook__inner {
+	min-width: 340px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	.fb-page.fb_iframe_widget {
+		width: 100%;
+	}
 }

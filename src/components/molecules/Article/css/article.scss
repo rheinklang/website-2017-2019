@@ -2,6 +2,12 @@
 
 $image-size: 400px;
 
+.m-article__list-wrapper {
+	max-width: 1280px;
+	width: 95%;
+	margin: 0 auto;
+}
+
 .m-article {
 	margin-bottom: 50px;
 	transform-style: preserve-3d;
@@ -9,6 +15,11 @@ $image-size: 400px;
 
 	@include mobile {
 		margin-bottom: 20px;
+		transform: none !important; // override tilt effect on mobile
+
+		.js-tilt-glare {
+			display: none;
+		}
 	}
 
 	&:hover {
@@ -34,11 +45,10 @@ $image-size: 400px;
 }
 
 .m-article__figure {
-	display: block;
-	width: 100%;
 	height: $image-size;
 	overflow: hidden;
 	margin-bottom: 25px;
+	border-radius: 2px;
 
 	@include mobile {
 		margin-bottom: 0;
@@ -52,6 +62,10 @@ $image-size: 400px;
 	display: block;
 	width: 100%;
 	min-height: $image-size;
+
+	@include mobile {
+		min-height: 0;
+	}
 }
 
 .m-article__content {
@@ -61,14 +75,15 @@ $image-size: 400px;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	padding: 20px;
+	padding: 15px 25px 25px 25px;
 	text-align: left;
 
 	@include mobile {
 		position: relative;
 	}
 
-	p, h2 {
+	p,
+	h2 {
 		will-change: text-shadow;
 		transition: text-shadow 0.5s linear;
 		color: #fff;
@@ -77,18 +92,21 @@ $image-size: 400px;
 	}
 
 	&:hover {
-		p, h2 {
+		p,
+		h2 {
 			text-shadow: 0 0 10px #444;
 		}
 	}
 
 	@include mobile {
-		p, h2  {
+		p,
+		h2 {
 			text-shadow: none;
 		}
 
 		&:hover {
-			p, h2  {
+			p,
+			h2 {
 				text-shadow: none;
 			}
 		}
@@ -96,8 +114,8 @@ $image-size: 400px;
 }
 
 .m-article__text {
-	word-wrap: break-word;
-	font-size: 13px;
-	line-height: 15px;
+	font-weight: 600;
+	font-size: 17px;
+	line-height: 23px;
 	margin-top: 10px;
 }

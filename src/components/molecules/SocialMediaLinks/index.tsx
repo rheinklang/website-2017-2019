@@ -25,7 +25,7 @@ export const SocialMediaLinks = () => {
 						title="Facebook"
 						onClick={trackSocialMediaInteractionHandler('Facebook')}
 					>
-						<Icon select="facebook" />
+						<Icon select="facebook2" />
 					</a>
 				</li>
 				<li className="m-social-media-links__entry">

@@ -17,8 +17,9 @@ import { Section } from './components/molecules/Section';
 // import { Section } from './components/molecules/Section';
 // import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
 import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
-import { FacebookWidget } from './components/widgets/Facebook';
 // import { Sponsors } from './components/molecules/Sponsors';
+import { FacebookWidget } from './components/widgets/Facebook';
+import { Tickets } from './components/widgets/Tickets';
 import { GoogleAnalytics } from './partials/GoogleAnalytics';
 import { GoogleTagManager } from './partials/GoogleTagManager';
 
@@ -51,17 +52,16 @@ class App extends React.Component<any, IAppState> {
 		return (
 			<main className="o-react-app">
 				<Jumbotron />
-				<Section colorize="dark-turquise">
-					TICKETING HERE
+				<Section colorize="dark-turquise" title="Tickets">
+					<Tickets />
 				</Section>
-				<div className="container">
-					<div className="row">
-						<Article title="Liebe zum Detail" image="liebe-zum-detail.jpg" text={["Das Team kümmert sich beim Event nicht nur um die Musik, sondern um jede Feinheit die das Festival zu dem macht, was es ist"]} />
-						<Article title="Regional" image="events-aus-der-region.jpg" text={["Wir setzen auf Regionalität! Unsere Künstler, Lieferanten und Mitglieder stammen alle aus der Region."]} />
-						<Article title="Zusammen" image="gemuetlich-zusammen.jpg" text={["Wir wollen eine Atmosphäre schaffen, in der ihr euch als Gruppe wohl fühlt und euch ausleben könnt."]} />
-						<Article title="Für Jung und Alt" image="jung-und-alt.jpg" text={["Das Festival ist für Jung und Alt geeignet und bietet für jeden das gewisse etwas."]} />
-						<Article title="Feeling" image="abend-crowd.jpg" text={["tbd."]} />
-					</div>
+				<div className="columns m-article__list-wrapper">
+					<Article title="Liebe zum Detail" image="liebe-zum-detail.jpg" text={["Das Team kümmert sich beim Event nicht nur um die Musik, sondern um jede Feinheit die das Festival zu dem macht, was es ist"]} />
+					<Article title="Regional" image="events-aus-der-region.jpg" text={["Wir setzen auf Regionalität! Unsere Künstler, Lieferanten und Mitglieder stammen alle aus der Region."]} />
+				</div>
+				<div className="columns m-article__list-wrapper">
+					<Article title="Zusammen" image="gemuetlich-zusammen.jpg" text={["Wir wollen eine Atmosphäre schaffen, in der ihr euch als Gruppe wohl fühlt und euch ausleben könnt."]} />
+					<Article title="Für Jung und Alt" image="jung-und-alt.jpg" text={["Das Festival ist für Jung und Alt geeignet und bietet für jeden das gewisse etwas."]} />
 				</div>
 				{/* <Section id="logo">
 					<AnimatedLogo />
@@ -100,7 +100,7 @@ class App extends React.Component<any, IAppState> {
 						</Column>
 					</Grid>
 				</Section> */}
-				{/* <Section id="sponsors" colorize="white" title="Unsere Unterstützung">
+				{/* TODO: <Section id="sponsors" colorize="white" title="Unsere Unterstützung">
 					<Sponsors />
 				</Section> */}
 				{/* <Separator modifier="dark" /> */}

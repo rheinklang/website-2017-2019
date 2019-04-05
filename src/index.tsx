@@ -2,7 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 // all libraries
-import 'flexboxgrid/dist/flexboxgrid.min.css';
+import 'bulma/css/bulma.css';
+import 'microtip/microtip.css';
 import 'vanilla-tilt/dist/vanilla-tilt.min.js';
 
 // application content

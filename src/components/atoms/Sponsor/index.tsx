@@ -16,6 +16,8 @@ export const Sponsor = ({ link, modifier, name, image }: ISponsorProps) => {
 			target="_blank"
 			rel="noopener noreferrer"
 			className={`a-sponsor${modifier ? ` a-sponsor--${modifier}` : ''}`}
+			data-microtip-position="top" role="tooltip"
+			aria-label={name}
 		>
 			<AsyncImage className="a-sponsor__image" path={`sponsors/${image}`} alt={name} />
 		</a>

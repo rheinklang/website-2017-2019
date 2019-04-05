@@ -9,9 +9,11 @@ export class Jumbotron extends React.Component<{}> {
 		return (
 			<div className="m-jumbotron">
 				<div className="container">
-					<div className="col-xs-12 center-xs" dangerouslySetInnerHTML={{ __html: asset }}>
-						{/* <AsyncImage path="general/cover.svg" alt="cover" /> */}
-						{/* <img src={asset} alt="cover" /> */}
+					<div className="row">
+						<div className="col-xs-12 center-xs" dangerouslySetInnerHTML={{ __html: asset }}>
+							{/* <AsyncImage path="general/cover.svg" alt="cover" /> */}
+							{/* <img src={asset} alt="cover" /> */}
+						</div>
 					</div>
 				</div>
 			</div>

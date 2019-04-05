@@ -2,11 +2,11 @@
 
 .m-jumbotron {
 	min-height: 200px;
-	padding: 100px 0;
+	padding: 100px 20px;
 	width: 100%;
 
 	@include mobile {
-		padding: 50px 0 0 0;
+		padding: 20px 20px 0 20px;
 		min-height: auto;
 	}
 }
@@ -24,13 +24,13 @@
 @mixin color-pulse($name, $r, $g, $b) {
 	@keyframes #{$name} {
 		0% {
-			fill: darken($color: rgb($r,$g,$b), $amount: 0);
+			fill: darken($color: rgb($r, $g, $b), $amount: 0);
 		}
 		70% {
-			fill: darken($color: rgb($r,$g,$b), $amount: 2);
+			fill: darken($color: rgb($r, $g, $b), $amount: 2);
 		}
 		100% {
-			fill: darken($color: rgb($r,$g,$b), $amount: 4);
+			fill: darken($color: rgb($r, $g, $b), $amount: 4);
 		}
 	}
 }
@@ -66,7 +66,6 @@
 }
 
 // =============== Typo drain animation
-
 $typo-anim-duration: 2s;
 
 @keyframes text-opacity-pulse {
@@ -128,8 +127,8 @@ $typo-anim-duration: 2s;
 
 @for $cl from 1 to 9 {
 	#cl-#{$cl} {
-		animation: color-line-blender 0.8s infinite;
-		animation-delay: #{$cl * 0.357}s;
+		animation: color-line-blender 1s infinite;
+		animation-delay: #{$cl * 0.891}s;
 		animation-direction: alternate;
 	}
 }

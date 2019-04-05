@@ -49,7 +49,7 @@ export const Sponsors = () => (
 				<Sponsor name="St.Galler Kantonalbank" link="https://sgkb.ch" image="sgkb.jpg" />
 			</Column>
 			<Column className="m-sponsors__primary">
-				<Sponsor name="Heimat" link="https://heimatkult.ch" image="heimat.png" />
+				<Sponsor name="Heimat - Tabakprodukte" link="https://heimatkult.ch" image="heimat.png" />
 			</Column>
 			<Column>
 				<Sponsor name="Rheintaler Bote" link="http://rheintaler-bote.ch" image="rheintalerbote.png" />
@@ -57,7 +57,7 @@ export const Sponsors = () => (
 		</Grid>
 		<Grid className="m-sponsors__row">
 			<Column>
-				<Sponsor name="OhmVapers" link="http://ohm-vapers.ch" image="ohmvapers.png" />
+				<Sponsor name="OhmVapers E-Zigaretten" link="http://ohm-vapers.ch" image="ohmvapers.png" />
 			</Column>
 			<Column>
 				<Sponsor name="Hirn" link="http://hirn.ch" image="hirnautomobile.png" />
@@ -67,11 +67,28 @@ export const Sponsors = () => (
 			</Column>
 		</Grid>
 		<Grid className="m-sponsors__row">
+			<Column>
+				<Sponsor
+					name="Swiss Can Machinery"
+					link="https://www.canmachinery.com/home/"
+					image="swisscanmachinery.jpg"
+				/>
+			</Column>
+			<Column>
+				<Sponsor
+					name="Sonnenbräu - Rheintaler Bier"
+					link="https://www.sonnenbraeu.ch/"
+					image="sonnenbraeu.jpg"
+				/>
+			</Column>
 			<Column className="m-sponsors__small">
 				<Sponsor name="Thür Getränke" link="http://thuergetraenke.ch" image="thuergetranke.jpg" />
 			</Column>
 			<Column className="m-sponsors__small">
 				<Sponsor name="Sonnebräu" link="https://sonnenbraeu.ch/" image="sonnenbrau.png" />
+			</Column>
+			<Column className="m-sponsors__small">
+				<Sponsor name="Kühnis Eventtechnik" link="http://http://eventtechnik-kuehnis.ch/" image="kuehnis-eventtechnik.png" />
 			</Column>
 		</Grid>
 	</div>

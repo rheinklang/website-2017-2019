@@ -6,11 +6,9 @@ export const FacebookWidgetEmbeddInternal = () => (
 )
 
 export const FacebookWidget = () => (
-	<div className="container w-facebook">
-		<div className="row">
-			<div className="col-xs-12 center-xs w-facebook__inner">
-				<FacebookWidgetEmbeddInternal />
-			</div>
+	<div className="w-facebook">
+		<div className="w-facebook__inner">
+			<FacebookWidgetEmbeddInternal />
 		</div>
 	</div>
 )

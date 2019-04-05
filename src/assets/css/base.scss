@@ -1,3 +1,5 @@
+@import './viewport.scss';
+
 *,
 *:after,
 *:before {
@@ -8,6 +10,10 @@ body {
 	color: #0b363b;
 	// background-color: #f8faee;
 	background-color: #fff;
+
+	@include mobile {
+		overflow-x: hidden;
+	}
 }
 
 a {
@@ -25,11 +31,15 @@ a {
 	}
 }
 
-.container-fluid.container-fluid--stretch-out {
-	padding-left: 0;
-	padding-right: 0;
-
-	[class*=col-] {
-		padding: 0;
-	}
+p {
+	word-wrap: break-word;
 }
+
+// .container-fluid.container-fluid--stretch-out {
+// 	padding-left: 0;
+// 	padding-right: 0;
+
+// 	[class*=col-] {
+// 		padding: 0;
+// 	}
+// }

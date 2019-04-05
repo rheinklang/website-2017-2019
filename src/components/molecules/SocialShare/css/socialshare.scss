@@ -1,0 +1,19 @@
+.m-social-share {
+	background-color: #fff;
+	border-radius: 40px;
+	height: 62px;
+	display: inline-block;
+}
+
+.m-social-share__list {
+	margin: 0;
+	padding: 0;
+	// overflow: hidden;
+	display: inline-block;
+
+	li {
+		font-size: 35px;
+		padding: 5px 20px;
+		float: left;
+	}
+}

@@ -37,7 +37,7 @@ export class Article extends React.Component<IArticleProps> {
 		const props = this.props;
 
 		return (
-			<article id={`m-article-id-${this.id}`} className="m-article col-xs-12 col-md-6" data-tilt={true} data-tilt-glare={true} data-tilt-scale={1.1}>
+			<article id={`m-article-id-${this.id}`} className="m-article column is-12-mobile is-6-tablet is-6-desktop" data-tilt={true} data-tilt-glare={true} data-tilt-scale={1.1}>
 				<div className="m-article__wrapper">
 					<header>
 						<figure className="m-article__figure">
