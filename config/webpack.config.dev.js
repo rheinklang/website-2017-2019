@@ -143,13 +143,13 @@ module.exports = {
 					{
 						test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
 						include: [
-							path.resolve(__dirname, '../src/assets/fonts')
+							path.resolve(__dirname, '../src/assets/fonts'),
+							path.resolve(__dirname, '../src/components/atoms/Icon/css/fonts'),
 						],
 						use: [{
 							loader: 'file-loader',
 							options: {
-								name: '[name].[hash:8].[ext]',
-								outputPath: 'fonts/'
+								name: 'static/media/fonts/[name].[hash].[ext]'
 							}
 						}]
 					},

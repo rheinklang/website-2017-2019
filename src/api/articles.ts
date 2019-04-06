@@ -1,5 +1,6 @@
-import { client } from './client';
+import { IArticle } from '../schemes/Article';
+import api from './api';
 
-export const fetchArticles = async () => {
-	return await client.getItems('articles');
+export const ArticlesAPI = {
+	getArticles: () => api.getItems<IArticle[]>('articles'),
 };

@@ -8,11 +8,17 @@ import 'vanilla-tilt/dist/vanilla-tilt.min.js';
 
 // application content
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { ErrorBoundary } from './ErrorBoundary';
+// import registerServiceWorker from './registerServiceWorker';
+
+// stores
+import { configuration } from './store';
 
 ReactDOM.render(
-	<App />,
+	<ErrorBoundary>
+		<App configurationStore={configuration} />
+	</ErrorBoundary>,
 	document.getElementById('root') as HTMLElement
 );
 
-registerServiceWorker();
+// registerServiceWorker();

@@ -5,6 +5,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ManifestPlugin = require('webpack-manifest-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
@@ -57,30 +58,6 @@ module.exports = {
 	// We generate sourcemaps in production. This is slow but gives good results.
 	// You can exclude the *.map files from the build during deployment.
 	devtool: shouldUseSourceMap ? 'source-map' : false,
-	// Update performance on 5th of april due bundle size to large
-	// @jbiasi
-	optimization: {
-		nodeEnv: 'production',
-		mangleWasmImports: true,
-		removeAvailableModules: true,
-		splitChunks: {
-			chunks: 'async',
-			maxInitialRequests: 3,
-			automaticNameDelimiter: '~',
-			name: true,
-			cacheGroups: {
-				vendors: {
-					test: /[\\/]node_modules[\\/]/,
-					priority: -10
-				},
-				default: {
-					minChunks: 2,
-					priority: -20,
-					reuseExistingChunk: true
-				}
-			}
-		}
-	},
 	// In production, we only want to load the polyfills and the app code.
 	entry: [require.resolve('./polyfills'), paths.appIndexJs],
 	output: {
@@ -172,13 +149,13 @@ module.exports = {
 					{
 						test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
 						include: [
-							path.resolve(__dirname, '../src/assets/fonts')
+							path.resolve(__dirname, '../src/assets/fonts'),
+							path.resolve(__dirname, '../src/components/atoms/Icon/css/fonts'),
 						],
 						use: [{
-							loader: require.resolve('url-loader'),
+							loader: 'file-loader',
 							options: {
-								name: '[name].[hash:8].[ext]',
-								outputPath: 'static/fonts/'
+								name: 'static/media/fonts/[name].[hash].[ext]'
 							}
 						}]
 					},
@@ -194,6 +171,7 @@ module.exports = {
 						include: paths.appSrc,
 						loader: require.resolve('babel-loader'),
 						options: {
+
 							compact: true,
 						},
 					},
@@ -240,7 +218,7 @@ module.exports = {
 											loader: require.resolve('css-loader'),
 											options: {
 												importLoaders: 1,
-												// minimize: true, FIXME: deprecated since v1.x
+												minimize: true,
 												sourceMap: shouldUseSourceMap,
 											},
 										},
@@ -379,7 +357,7 @@ module.exports = {
 			// If a URL is already hashed by Webpack, then there is no concern
 			// about it being stale, and the cache-busting can be skipped.
 			dontCacheBustUrlsMatching: /\.\w{8}\./,
-			filename: 'service-worker.js',
+			filename: 'registerServiceWorker.ts',
 			logger(message) {
 				if (message.indexOf('Total precache size is') === 0) {
 					// This message occurs for every build and is a bit too noisy.

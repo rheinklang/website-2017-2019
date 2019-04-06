@@ -1,12 +1,16 @@
+import { observer } from 'mobx-react';
 import * as React from 'react';
 import * as ReactGA from 'react-ga';
+
 import './assets/css/index.scss';
+
+// Component imports
 // import { Separator } from './components/abstract/Separator';
 // import { AnimatedLogo } from './components/atoms/AnimatedLogo';
 // import { Countdown } from './components/atoms/Countdown';
 import { Footer } from './components/atoms/Footer';
 import { TourDates } from './components/atoms/TourDates';
-import { Article } from './components/molecules/Article';
+// import { Article } from './components/molecules/Article';
 // import { TourDates } from './components/atoms/TourDates';
 // import { Loader } from './components/atoms/Loader';
 // import { AvatarTree } from './components/molecules/AvatarTree';
@@ -17,13 +21,23 @@ import { Section } from './components/molecules/Section';
 // import { Section } from './components/molecules/Section';
 // import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
 import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
-// import { Sponsors } from './components/molecules/Sponsors';
+import { Sponsors } from './components/molecules/Sponsors';
+import { Articles } from './components/organisms/Articles';
 import { FacebookWidget } from './components/widgets/Facebook';
 import { Tickets } from './components/widgets/Tickets';
 import { GoogleAnalytics } from './partials/GoogleAnalytics';
 import { GoogleTagManager } from './partials/GoogleTagManager';
 
+// Store imports
+import { articles, ticketing } from './store';
+import { ConfigurationStore } from './store/ConfigurationStore';
+import { PartnerStore } from './store/PartnerStore';
+
 const IS_PROD = process.env.NODE_ENV === 'production';
+
+export interface IAppProps {
+	configurationStore: ConfigurationStore
+}
 
 export interface IAppState {
 	display: boolean;
@@ -43,26 +57,24 @@ if(!IS_PROD) {
 	_gaq.push(["_trackPageview"]);
 }
 
-class App extends React.Component<any, IAppState> {
+@observer
+class App extends React.Component<IAppProps, IAppState> {
 	public state = {
 		display: true,
 	};
 
 	public render() {
+		if(this.props.configurationStore) {
+			// tslint:disable-next-line:no-console
+			console.log(this.props.configurationStore.display || 'none')
+		}
 		return (
 			<main className="o-react-app">
 				<Jumbotron />
 				<Section colorize="dark-turquise" title="Tickets">
-					<Tickets />
+					<Tickets ticketingStore={ticketing} />
 				</Section>
-				<div className="columns m-article__list-wrapper">
-					<Article title="Liebe zum Detail" image="liebe-zum-detail.jpg" text={["Das Team kümmert sich beim Event nicht nur um die Musik, sondern um jede Feinheit die das Festival zu dem macht, was es ist"]} />
-					<Article title="Regional" image="events-aus-der-region.jpg" text={["Wir setzen auf Regionalität! Unsere Künstler, Lieferanten und Mitglieder stammen alle aus der Region."]} />
-				</div>
-				<div className="columns m-article__list-wrapper">
-					<Article title="Zusammen" image="gemuetlich-zusammen.jpg" text={["Wir wollen eine Atmosphäre schaffen, in der ihr euch als Gruppe wohl fühlt und euch ausleben könnt."]} />
-					<Article title="Für Jung und Alt" image="jung-und-alt.jpg" text={["Das Festival ist für Jung und Alt geeignet und bietet für jeden das gewisse etwas."]} />
-				</div>
+				<Articles articlesStore={articles} />
 				{/* <Section id="logo">
 					<AnimatedLogo />
 				</Section> */}
@@ -100,9 +112,9 @@ class App extends React.Component<any, IAppState> {
 						</Column>
 					</Grid>
 				</Section> */}
-				{/* TODO: <Section id="sponsors" colorize="white" title="Unsere Unterstützung">
-					<Sponsors />
-				</Section> */}
+				{this.shouldShowSponsors && <Section id="sponsors" colorize="white" title="Unsere Unterstützung">
+					<Sponsors parnterStore={new PartnerStore()} />
+				</Section>}
 				{/* <Separator modifier="dark" /> */}
 				<Section
 					id="social"
@@ -119,6 +131,10 @@ class App extends React.Component<any, IAppState> {
 				<GoogleTagManager />
 			</main>
 		);
+	}
+
+	private get shouldShowSponsors(): boolean {
+		return this.props.configurationStore.display.sponsors;
 	}
 }
 
