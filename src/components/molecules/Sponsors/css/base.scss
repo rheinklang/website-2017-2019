@@ -1,28 +1,9 @@
+@import '../../../../assets/css/viewport.scss';
+
 .m-sponsors {
-	.a-sponsor {
-		display: block;
-		margin: 20px;
-
-		.a-sponsor__image {
-			margin: 0 auto;
-		}
-
-		@media all and (min-width: 500px) {
-			.a-sponsor__image {
-				filter: gray;
-				filter: grayscale(1);
-				transition: all 0.8s ease-in-out;
-
-				&:hover {
-					filter: none;
-					filter: grayscale(0);
-				}
-			}
-		}
-	}
-
-	.m-sponsors__row {
-		margin: 30px 0;
+	.a-sponsors__entry {
+		text-align: center;
+		margin-bottom: 30px;
 	}
 
 	.a-sponsor__image {
@@ -31,28 +12,10 @@
 	}
 
 	.a-sponsor {
-		@media all and (max-width: 500px) {
+		margin: 25px;
+
+		@include mobile {
 			margin: 20px auto;
 		}
-
-		margin: 30px;
-	}
-
-	.m-sponsors__primary {
-		.a-sponsor {
-			@media all and (max-width: 500px) {
-				margin: 50px auto;
-			}
-
-			margin: 40px;
-		}
-
-		.a-sponsor__image {
-			max-width: 280px;
-		}
-	}
-
-	.m-grid__column {
-		align-self: center;
 	}
 }

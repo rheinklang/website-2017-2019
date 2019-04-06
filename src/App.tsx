@@ -1,13 +1,15 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
 import * as ReactGA from 'react-ga';
+import Helmet from 'react-helmet';
 
 import './assets/css/index.scss';
 
 // Component imports
 // import { Separator } from './components/abstract/Separator';
-// import { AnimatedLogo } from './components/atoms/AnimatedLogo';
-// import { Countdown } from './components/atoms/Countdown';
+import { getLabelFor } from './components/abstract/I18n';
+import { AnimatedLogo } from './components/atoms/AnimatedLogo';
+import { Countdown } from './components/atoms/Countdown';
 import { Footer } from './components/atoms/Footer';
 import { TourDates } from './components/atoms/TourDates';
 // import { Article } from './components/molecules/Article';
@@ -29,9 +31,8 @@ import { GoogleAnalytics } from './partials/GoogleAnalytics';
 import { GoogleTagManager } from './partials/GoogleTagManager';
 
 // Store imports
-import { articles, ticketing } from './store';
+import { articles, configuration, i18n, partner, ticketing } from './store';
 import { ConfigurationStore } from './store/ConfigurationStore';
-import { PartnerStore } from './store/PartnerStore';
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 
@@ -66,8 +67,9 @@ class App extends React.Component<IAppProps, IAppState> {
 	public render() {
 		if(this.props.configurationStore) {
 			// tslint:disable-next-line:no-console
-			console.log(this.props.configurationStore.display || 'none')
+			// console.log(this.props.configurationStore.display || 'none')
 		}
+
 		return (
 			<main className="o-react-app">
 				<Jumbotron />
@@ -75,9 +77,6 @@ class App extends React.Component<IAppProps, IAppState> {
 					<Tickets ticketingStore={ticketing} />
 				</Section>
 				<Articles articlesStore={articles} />
-				{/* <Section id="logo">
-					<AnimatedLogo />
-				</Section> */}
 				<Section id="tour-dates" colorize="red" title="Weitere Tourdaten">
 					<TourDates />
 				</Section>
@@ -104,17 +103,17 @@ class App extends React.Component<IAppProps, IAppState> {
 					</Grid>
 					<AvatarTree />
 				</Section> */}
-				{/* <Section id="countdown" colorize="dark-turquise" title="Es geht schon bald los!">
-					<PresaleInfo />
-					<Grid>
-						<Column>
-							<Countdown />
-						</Column>
-					</Grid>
-				</Section> */}
 				{this.shouldShowSponsors && <Section id="sponsors" colorize="white" title="Unsere Unterstützung">
-					<Sponsors parnterStore={new PartnerStore()} />
+					<Sponsors parnterStore={partner} />
 				</Section>}
+				<Section id="countdown" colorize="green" leaveContentSkewed={true}>
+					<div className="columns is-mobile is-centered">
+						<Countdown configurationStore={configuration} />
+					</div>
+				</Section>
+				<Section id="logo">
+					<AnimatedLogo />
+				</Section>
 				{/* <Separator modifier="dark" /> */}
 				<Section
 					id="social"
@@ -127,9 +126,32 @@ class App extends React.Component<IAppProps, IAppState> {
 				<br/>
 				<FacebookWidget />
 				<Footer />
+				{this.injectDynamicMetaData()}
 				<GoogleAnalytics />
 				<GoogleTagManager />
 			</main>
+		);
+	}
+
+	private injectDynamicMetaData() {
+		const seoDescription = getLabelFor('seo.description', i18n);
+		const seoTitle = getLabelFor('seo.title', i18n);
+		const metaRobots = getLabelFor('meta.robots', i18n);
+		const ogTitle = getLabelFor('og.title', i18n);
+		const ogDescription = getLabelFor('og.description', i18n);
+		const ogImage = getLabelFor('og.image', i18n);
+		const ogUrl = getLabelFor('og.url', i18n);
+
+		return (
+			<Helmet>
+				{seoTitle && <title>{seoTitle}</title>}
+				{seoDescription && <meta name="description" content={seoDescription} />}
+				{metaRobots && <meta name="robots" content="index, follow" />}
+				{ogTitle && <meta property="og:title" content={ogTitle} />}
+				{ogDescription && <meta property="og:description" content={ogDescription} />}
+				{ogUrl && <meta property="og:url" content={ogUrl} />}
+				{ogImage && <meta property="og:image" content={ogImage} />}
+			</Helmet>
 		);
 	}
 

@@ -1,25 +1,41 @@
 import * as React from 'react';
-import { AsyncImage } from '../../abstract/AsyncImage';
+
+import { IDirectusImage } from '../../../schemes/cms/DirectusImage';
+import { PartnerPackageType } from '../../../schemes/Partner';
+import { CMSImage } from '../CMSImage';
+
 import './css/base.scss';
 
 export interface ISponsorProps {
 	name: string;
-	image: string;
+	image: IDirectusImage;
 	link: string;
-	modifier?: string;
+	tooltip: string;
+	package: PartnerPackageType;
+	primary: boolean;
 }
 
-export const Sponsor = ({ link, modifier, name, image }: ISponsorProps) => {
+export const Sponsor = (props: ISponsorProps) => {
+	const { link, name, image } = props;
+
+	const classList = ['a-sponsor'];
+	if (props.package) {
+		classList.push(`a-sponsor--${props.package}`)
+	}
+	if (props.primary) {
+		classList.push('a-sponsor--primary');
+	}
+
 	return (
 		<a
 			href={link}
 			target="_blank"
 			rel="noopener noreferrer"
-			className={`a-sponsor${modifier ? ` a-sponsor--${modifier}` : ''}`}
+			className={classList.join(' ')}
 			data-microtip-position="top" role="tooltip"
 			aria-label={name}
 		>
-			<AsyncImage className="a-sponsor__image" path={`sponsors/${image}`} alt={name} />
+			<CMSImage {...image} />
 		</a>
 	);
 };

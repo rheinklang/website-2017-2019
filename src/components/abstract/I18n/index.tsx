@@ -23,3 +23,13 @@ export class I18n extends React.Component<IInternaltionalizationProps> {
 		return '';
 	}
 }
+
+export const getLabelFor = (key: string, i18nStore: I18nStore) => {
+	const labelDefinition = i18nStore.get(key);
+
+	if (labelDefinition && Array.isArray(labelDefinition) && labelDefinition.length > 0) {
+		return labelDefinition[0].value;
+	}
+
+	return null;
+}

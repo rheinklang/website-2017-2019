@@ -40,8 +40,20 @@
 	}
 
 	&.m-section--social {
+		margin-top: 0;
+		padding-top: 20px;
+
 		@include mobile {
 			margin-bottom: 0;
 		}
+	}
+
+	&.m-section--sponsors {
+		margin-bottom: 10px;
+	}
+
+	&.m-section--logo {
+		margin: 90px 0 0 0;
+		padding: 0;
 	}
 }

@@ -22,7 +22,7 @@ export class TicketingStore {
 	}
 
 	public get embeddFrameContents() {
-		return this.ticketing.embedd_frame
+		return this.ticketing.embedd_frame;
 	}
 
 	public get areShareLinksEnabled() {

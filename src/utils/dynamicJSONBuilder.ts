@@ -29,7 +29,7 @@ export const parseDotNotation = (str: string, val: any, obj: object) => {
 		currentObj = currentObj[key];
 	}
 
-	currentObj[keys[i]] = stringToValue(val);
+	currentObj[keys[i]] = keys[i].indexOf('date') >= 0 ? val : stringToValue(val);
 	delete obj[str];
 };
 

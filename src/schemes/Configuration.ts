@@ -20,4 +20,8 @@ export interface IConfiguration {
 		lineup: boolean;
 		sponsors: boolean;
 	};
+	countdown: {
+		date: string;
+		visible: boolean;
+	};
 }

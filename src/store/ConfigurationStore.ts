@@ -27,7 +27,7 @@ export class ConfigurationStore {
 		return {
 			host: window.location.host,
 			maintenance: false,
-			status: 'na'
+			status: 'na',
 		};
 	}
 
@@ -42,7 +42,19 @@ export class ConfigurationStore {
 			lineup: false,
 			sponsors: false,
 			tickets: false,
+		};
+	}
+
+	@computed.struct
+	public get countdown(): IConfiguration['countdown'] {
+		if (this.configuration) {
+			return this.configuration.countdown;
 		}
+
+		return {
+			date: '',
+			visible: false,
+		};
 	}
 
 	@action.bound

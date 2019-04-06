@@ -43,7 +43,7 @@ customHttpClient.interceptors.response.use(
 		// tslint:disable-next-line
 		console.warn(
 			`${(error.config.method || 'unknown').toUpperCase()} ${error.config.url} (withCredentials: ${
-			error.config.withCredentials
+				error.config.withCredentials
 			})`
 		);
 

@@ -1,28 +1,47 @@
+@import '../../../../assets/css/viewport.scss';
+
+$countdown-text-size: 35px;
+$countdown-text-size-mobile: 25px;
+
 .a-countdown {
-	margin: 50px 0 0 0;
+	@include desktop {
+		padding: 30px 0;
+	}
 
 	.a-countdown__content {
 		text-align: center;
-		line-height: 5em;
+		line-height: #{$countdown-text-size * 2};
+		margin-bottom: 0;
+
+		@include mobile {
+			line-height: #{$countdown-text-size-mobile * 2};
+		}
+	}
+
+	.a-countdown__content-fragment,
+	.a-countdown__content-text {
+		font-size: $countdown-text-size;
+
+		@include mobile() {
+			font-size: $countdown-text-size-mobile;
+		}
 	}
 
 	.a-countdown__content-fragment {
 		font-weight: 700;
-		border: 3px solid #f8faee;
-		border-radius: 4px;
-		padding: 10px;
-		font-size: 1.5em;
-		margin: 0 10px;
+		margin: 0 10px 0 0;
 	}
 
 	.a-countdown__content-text {
 		font-weight: 300;
-		font-size: 2em;
 	}
-}
 
-@media all and (max-width: 800px) {
 	.a-countdown__content-wrapper {
-		display: block;
+		margin-right: 20px;
+
+		@include mobile {
+			display: block;
+			margin-right: 0;
+		}
 	}
 }

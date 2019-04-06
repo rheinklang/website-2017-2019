@@ -6,8 +6,8 @@ export interface IArticle extends IDirectusModel {
 	author: string;
 	timestamp: string;
 	body?: string;
-	excerpt: string,
-	invert_colors: 'yes' | 'no',
+	excerpt: string;
+	invert_colors: 'yes' | 'no';
 	title: string;
 	slug: string;
 	image: IDirectusResponse<IDirectusImage>;

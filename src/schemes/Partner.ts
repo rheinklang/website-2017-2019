@@ -2,6 +2,8 @@ import { IDirectusImage } from './cms/DirectusImage';
 import { IDirectusModel } from './cms/DirectusModel';
 import { IDirectusResponse } from './cms/DirectusResponse';
 
+export type PartnerPackageType = 'gold' | 'silver' | 'bronze' | null;
+
 export interface IPartner extends IDirectusModel {
 	homepage: string;
 	name: string;
@@ -10,5 +12,6 @@ export interface IPartner extends IDirectusModel {
 	description?: string;
 	image: IDirectusResponse<IDirectusImage>;
 	is_primary: null | 1;
-	tooltip: string
+	package: PartnerPackageType;
+	tooltip: string;
 }

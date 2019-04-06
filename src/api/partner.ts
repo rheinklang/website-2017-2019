@@ -1,4 +1,3 @@
-
 import { IPartner } from '../schemes/Partner';
 import api from './api';
 

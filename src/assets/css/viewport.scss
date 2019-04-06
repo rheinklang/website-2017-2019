@@ -5,3 +5,9 @@ $mq-mobile: 660px;
 		@content;
 	}
 }
+
+@mixin desktop {
+	@media (min-width: $mq-mobile) {
+		@content;
+	}
+}
