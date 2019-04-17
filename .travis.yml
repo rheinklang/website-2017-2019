@@ -5,8 +5,7 @@ cache:
   directories:
     - node_modules
 install:
-  - npm install
-  - npm install --save fs-extra
+  - npm install --no-optional
 script:
   - npm run build
 env:
