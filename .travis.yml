@@ -3,15 +3,11 @@ node_js:
   - 10
 cache:
   npm: true
-  directories:
-    - ~/.cache
 install:
   - npm install
 script:
   - npm run build
 env:
   - NODE_ENV=production
-matrix:
-  fast_finish: true
 notifications:
   slack: rheinklang:BzAHcIwDekK6y8FmuOCPdW4t
