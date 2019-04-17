@@ -49,6 +49,7 @@ $image-size: 400px;
 	overflow: hidden;
 	margin-bottom: 25px;
 	border-radius: 2px;
+	background-color: #dfdfdf; // placeholder color
 
 	@include mobile {
 		margin-bottom: 0;

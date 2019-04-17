@@ -16,7 +16,11 @@ export const TourDates = () => {
 				data-background-color="#f8faee"
 				data-display-limit="15"
 				data-link-text-color="#f8faee"
-			/>
+			>
+				<p>Keine weiteren Tourdaten vorhanden.</p>
+			</a>
 		</React.Fragment>
 	);
 };
+
+export default TourDates;

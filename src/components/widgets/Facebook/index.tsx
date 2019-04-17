@@ -12,3 +12,5 @@ export const FacebookWidget = () => (
 		</div>
 	</div>
 )
+
+export default FacebookWidget;

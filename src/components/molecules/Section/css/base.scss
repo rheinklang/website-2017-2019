@@ -12,7 +12,7 @@
 	}
 }
 
-.m-section__article {
+.m-section__article:not(.m-section-article--skewed) {
 	margin: 0 auto;
 	max-width: 1160px; // 1200 - (2x20px)
 	transform: skew(0, -5deg);

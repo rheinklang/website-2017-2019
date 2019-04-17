@@ -6,4 +6,4 @@ export interface IIconProps {
 	appendClass?: string
 }
 
-export const Icon = ({ select, appendClass = '' }: IIconProps) => <i className={`a-icon a-icon-${select} ${appendClass}`} />;
+export const Icon = ({ select, appendClass = '' }: IIconProps) => <i className={`a-icon a-icon-${select}${appendClass ? ` ${appendClass}` : ''}`} />;

@@ -107,4 +107,4 @@ yarn-error.log*
 ./src/assets/css/**/*.css
 
 # Tokens
-token.*
+tokens.*

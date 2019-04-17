@@ -20,6 +20,7 @@
 		"jsx": "react",
 		"moduleResolution": "node",
 		"rootDir": "src",
+		"allowSyntheticDefaultImports": true,
 		"forceConsistentCasingInFileNames": true,
 		"noImplicitReturns": true,
 		"noImplicitThis": true,

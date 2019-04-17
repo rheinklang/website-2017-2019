@@ -26,3 +26,5 @@ export const AnimatedLogo = (props: IAnimatedLogoProps) => {
 		</div>
 	);
 };
+
+export default AnimatedLogo;

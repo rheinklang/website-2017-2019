@@ -1,4 +1,17 @@
+.bit-widget-initializer {
+	display: block;
+	width: 100%;
+
+	p {
+		color: #fff;
+		text-align: center;
+		font-size: 20px;
+		display: block;
+	}
+}
+
 .bit-widget {
+	display: block;
 	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
 
 	.bit-top-track-button {

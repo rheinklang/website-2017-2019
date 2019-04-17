@@ -1,20 +1,41 @@
+import { observer } from 'mobx-react';
 import * as React from 'react';
+
 import { Icon } from '../../atoms/Icon';
 import { SocialShare } from '../../molecules/SocialShare';
+
+import { TicketingStore } from '../../../store/TicketingStore';
+
 import './css/tickets.scss';
 
-export class Tickets extends React.Component<{}> {
+interface ITicketsProps {
+	ticketingStore: TicketingStore
+}
+
+@observer
+export class Tickets extends React.Component<ITicketsProps> {
 	public render() {
+		const {
+			isTicketShopOnline,
+			areShareLinksEnabled,
+			paymentMethodsText,
+			embeddFrameContents,
+			comingSoonText
+		} = this.props.ticketingStore;
+
 		return (
 			<div className="w-tickets">
-				<div className="columns is-centered w-tickets__embedd-container">
+				{!isTicketShopOnline && <div className="columns is-centered w-tickets__embedd-container">
 					<div className="column is-full">
-						<div className="w-tickets__coming-soon">
-							<h3>In kürze Erhältlich ...</h3>
+						{!embeddFrameContents && <div className="w-tickets__coming-soon">
+							<h3>{comingSoonText}</h3>
 							<Icon select="price-tags" />
-						</div>
+						</div>}
+						{embeddFrameContents && (
+							<div className="w-tickets__embedded" dangerouslySetInnerHTML={{ __html: embeddFrameContents }} />
+						)}
 					</div>
-				</div>
+				</div>}
 				<div className="columns w-tickets__payment-container">
 					<div className="column is-full">
 						<p
@@ -23,11 +44,11 @@ export class Tickets extends React.Component<{}> {
 							role="tooltip"
 							aria-label="Zahlungsabwicklung durch Eventfrog"
 						>
-							<Icon select="credit-card" /> Zahlung via Kreditkarte, PostFinance oder Twint möglich.
+							<Icon select="credit-card" />{` ${paymentMethodsText}`}
 						</p>
 					</div>
 				</div>
-				<div className="is-mobile is-centered w-tickets__share-container">
+				{areShareLinksEnabled && <div className="is-mobile is-centered w-tickets__share-container">
 					{/* <div className="column is-half is-hidden-desktop">
 						<a href={createDeepLink('whatsapp', 'send', {
 							text: 'Tickets für das Rheinklang Festival 2019!'
@@ -36,8 +57,10 @@ export class Tickets extends React.Component<{}> {
 						</a>
 					</div> */}
 					<SocialShare text="Tickets für das Rheinklang Festival 2019! https://rheinklang-festival.ch?shared-ticketing=true" url="https://rheinklang-festival.ch" />
-				</div>
+				</div>}
 			</div>
 		)
 	}
 }
+
+export default Tickets;

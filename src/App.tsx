@@ -1,40 +1,67 @@
+import { observer } from 'mobx-react';
 import * as React from 'react';
 import * as ReactGA from 'react-ga';
+import Helmet from 'react-helmet';
+import Loadable from 'react-loadable';
+
 import './assets/css/index.scss';
-// import { Separator } from './components/abstract/Separator';
-// import { AnimatedLogo } from './components/atoms/AnimatedLogo';
-// import { Countdown } from './components/atoms/Countdown';
+
+import { Loader } from './components/atoms/Loader/index';
+
+// Component imports
+import { getLabelFor } from './components/abstract/I18n';
+const AnimatedLogo = Loadable({
+	loader: () => import('./components/atoms/AnimatedLogo'),
+	loading: Loader
+});
+const Countdown = Loadable({
+	loader: () => import('./components/atoms/Countdown'),
+	loading: Loader
+});
 import { Footer } from './components/atoms/Footer';
-import { TourDates } from './components/atoms/TourDates';
-import { Article } from './components/molecules/Article';
-// import { TourDates } from './components/atoms/TourDates';
-// import { Loader } from './components/atoms/Loader';
-// import { AvatarTree } from './components/molecules/AvatarTree';
-// import { Column, Grid } from './components/molecules/Grid';
+import { TourDates } from './components/atoms/TourDates'; // can't load async due widget embedd
 import { Jumbotron } from './components/molecules/Jumbotron';
 import { Section } from './components/molecules/Section';
-// import { PresaleInfo } from './components/molecules/PresaleInfo/index';
-// import { Section } from './components/molecules/Section';
-// import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
 import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
-// import { Sponsors } from './components/molecules/Sponsors';
-import { FacebookWidget } from './components/widgets/Facebook';
-import { Tickets } from './components/widgets/Tickets';
+const Sponsors = Loadable({
+	loader: () => import('./components/molecules/Sponsors'),
+	loading: Loader
+});
+const Articles = Loadable({
+	loader: () => import('./components/organisms/Articles'),
+	loading: Loader
+});
+const FacebookWidget = Loadable({
+	loader: () => import('./components/widgets/Facebook'),
+	loading: Loader
+});
+const Tickets = Loadable({
+	loader: () => import('./components/widgets/Tickets'),
+	loading: Loader
+});
 import { GoogleAnalytics } from './partials/GoogleAnalytics';
 import { GoogleTagManager } from './partials/GoogleTagManager';
 
+// Store imports
+import { articles, configuration, i18n, partner, ticketing } from './store';
+import { ConfigurationStore } from './store/ConfigurationStore';
+
 const IS_PROD = process.env.NODE_ENV === 'production';
+
+export interface IAppProps {
+	configurationStore: ConfigurationStore
+}
 
 export interface IAppState {
 	display: boolean;
 }
 
+// analytics setup
 ReactGA.initialize('UA-57645783-4', {
 	debug: !IS_PROD,
 	gaOptions: { cookieDomain: 'none' }
 });
 ReactGA.pageview(window.location.pathname + window.location.search);
-
 if(!IS_PROD) {
 	// tslint:disable-next-line:variable-name
 	const _gaq: any[] = (window as any)._gaq || [];
@@ -43,29 +70,26 @@ if(!IS_PROD) {
 	_gaq.push(["_trackPageview"]);
 }
 
-class App extends React.Component<any, IAppState> {
+@observer
+class App extends React.Component<IAppProps, IAppState> {
 	public state = {
 		display: true,
 	};
 
 	public render() {
+		if(this.props.configurationStore) {
+			// tslint:disable-next-line:no-console
+			// console.log(this.props.configurationStore.display || 'none')
+		}
+
 		return (
 			<main className="o-react-app">
 				<Jumbotron />
 				<Section colorize="dark-turquise" title="Tickets">
-					<Tickets />
+					<Tickets ticketingStore={ticketing} />
 				</Section>
-				<div className="columns m-article__list-wrapper">
-					<Article title="Liebe zum Detail" image="liebe-zum-detail.jpg" text={["Das Team kümmert sich beim Event nicht nur um die Musik, sondern um jede Feinheit die das Festival zu dem macht, was es ist"]} />
-					<Article title="Regional" image="events-aus-der-region.jpg" text={["Wir setzen auf Regionalität! Unsere Künstler, Lieferanten und Mitglieder stammen alle aus der Region."]} />
-				</div>
-				<div className="columns m-article__list-wrapper">
-					<Article title="Zusammen" image="gemuetlich-zusammen.jpg" text={["Wir wollen eine Atmosphäre schaffen, in der ihr euch als Gruppe wohl fühlt und euch ausleben könnt."]} />
-					<Article title="Für Jung und Alt" image="jung-und-alt.jpg" text={["Das Festival ist für Jung und Alt geeignet und bietet für jeden das gewisse etwas."]} />
-				</div>
-				{/* <Section id="logo">
-					<AnimatedLogo />
-				</Section> */}
+				{articles.loaded && <Articles articlesStore={articles} />}
+				{!articles.loaded && <Loader />}
 				<Section id="tour-dates" colorize="red" title="Weitere Tourdaten">
 					<TourDates />
 				</Section>
@@ -92,17 +116,18 @@ class App extends React.Component<any, IAppState> {
 					</Grid>
 					<AvatarTree />
 				</Section> */}
-				{/* <Section id="countdown" colorize="dark-turquise" title="Es geht schon bald los!">
-					<PresaleInfo />
-					<Grid>
-						<Column>
-							<Countdown />
-						</Column>
-					</Grid>
-				</Section> */}
-				{/* TODO: <Section id="sponsors" colorize="white" title="Unsere Unterstützung">
-					<Sponsors />
-				</Section> */}
+				{this.shouldShowSponsors && <Section id="sponsors" colorize="white" title="Unsere Unterstützung">
+					<Sponsors parnterStore={partner} />
+				</Section>}
+				<Section id="countdown" colorize="green" leaveContentSkewed={true}>
+					<div className="columns is-mobile is-centered">
+						{configuration.loaded && <Countdown configurationStore={configuration} />}
+						{!configuration.loaded && <Loader />}
+					</div>
+				</Section>
+				<Section id="logo">
+					<AnimatedLogo />
+				</Section>
 				{/* <Separator modifier="dark" /> */}
 				<Section
 					id="social"
@@ -115,10 +140,37 @@ class App extends React.Component<any, IAppState> {
 				<br/>
 				<FacebookWidget />
 				<Footer />
+				{this.injectDynamicMetaData()}
 				<GoogleAnalytics />
 				<GoogleTagManager />
 			</main>
 		);
+	}
+
+	private injectDynamicMetaData() {
+		const seoDescription = getLabelFor('seo.description', i18n);
+		const seoTitle = getLabelFor('seo.title', i18n);
+		const metaRobots = getLabelFor('meta.robots', i18n);
+		const ogTitle = getLabelFor('og.title', i18n);
+		const ogDescription = getLabelFor('og.description', i18n);
+		const ogImage = getLabelFor('og.image', i18n);
+		const ogUrl = getLabelFor('og.url', i18n);
+
+		return (
+			<Helmet>
+				{seoTitle && <title>{seoTitle}</title>}
+				{seoDescription && <meta name="description" content={seoDescription} />}
+				{metaRobots && <meta name="robots" content="index, follow" />}
+				{ogTitle && <meta property="og:title" content={ogTitle} />}
+				{ogDescription && <meta property="og:description" content={ogDescription} />}
+				{ogUrl && <meta property="og:url" content={ogUrl} />}
+				{ogImage && <meta property="og:image" content={ogImage} />}
+			</Helmet>
+		);
+	}
+
+	private get shouldShowSponsors(): boolean {
+		return this.props.configurationStore.display.sponsors;
 	}
 }
 

@@ -1,10 +1,14 @@
 import * as React from 'react';
+// import { LazyImage } from 'react-lazy-images';
 import VanillaTilt from 'vanilla-tilt';
-import { AsyncImage } from '../../abstract/AsyncImage';
+
+import { CMSImage } from '../../../components/atoms/CMSImage';
+import { IDirectusImage } from '../../../schemes/cms/DirectusImage';
+
 import './css/article.scss';
 
 interface IArticleProps {
-	image: string,
+	image: IDirectusImage,
 	title: string,
 	text: string[],
 	reverse?: boolean,
@@ -37,11 +41,11 @@ export class Article extends React.Component<IArticleProps> {
 		const props = this.props;
 
 		return (
-			<article id={`m-article-id-${this.id}`} className="m-article column is-12-mobile is-6-tablet is-6-desktop" data-tilt={true} data-tilt-glare={true} data-tilt-scale={1.1}>
+			<article id={`m-article-id-${this.id}`} className="m-article" data-tilt={true} data-tilt-glare={true} data-tilt-scale={1.1}>
 				<div className="m-article__wrapper">
 					<header>
 						<figure className="m-article__figure">
-							<AsyncImage path={`article/${props.image}`} alt={props.title} />
+							<CMSImage {...props.image} />
 						</figure>
 					</header>
 					<div className="m-article__content">
@@ -52,4 +56,12 @@ export class Article extends React.Component<IArticleProps> {
 			</article>
 		)
 	}
+
+	// private renderImagePlaceholder({ imageProps, ref }: any) {
+	// 	return <div ref={ref} {...imageProps} />
+	// }
+
+	// private renderActualImage({ imageProps }: any) {
+	// 	return <img {...imageProps} />
+	// }
 }
