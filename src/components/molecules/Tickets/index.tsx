@@ -1,8 +1,9 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Icon } from '../../atoms/Icon';
-import { SocialShare } from '../../molecules/SocialShare';
+import { SocialShare } from '../SocialShare';
 
 import { TicketingStore } from '../../../store/TicketingStore';
 
@@ -19,23 +20,22 @@ export class Tickets extends React.Component<ITicketsProps> {
 			isTicketShopOnline,
 			areShareLinksEnabled,
 			paymentMethodsText,
-			embeddFrameContents,
 			comingSoonText
 		} = this.props.ticketingStore;
 
 		return (
 			<div className="w-tickets">
-				{!isTicketShopOnline && <div className="columns is-centered w-tickets__embedd-container">
+				<div className="columns is-centered is-vcentered w-tickets__embedd-container">
 					<div className="column is-full">
-						{!embeddFrameContents && <div className="w-tickets__coming-soon">
+						{!isTicketShopOnline && <div className="w-tickets__coming-soon">
 							<h3>{comingSoonText}</h3>
 							<Icon select="price-tags" />
 						</div>}
-						{embeddFrameContents && (
-							<div className="w-tickets__embedded" dangerouslySetInnerHTML={{ __html: embeddFrameContents }} />
-						)}
+						{isTicketShopOnline && <button className="w-tickets__button">
+							<Link to="/tickets" className="w-tickets__button-link">Tickets kaufen</Link>
+						</button>}
 					</div>
-				</div>}
+				</div>
 				<div className="columns w-tickets__payment-container">
 					<div className="column is-full">
 						<p
@@ -49,14 +49,7 @@ export class Tickets extends React.Component<ITicketsProps> {
 					</div>
 				</div>
 				{areShareLinksEnabled && <div className="is-mobile is-centered w-tickets__share-container">
-					{/* <div className="column is-half is-hidden-desktop">
-						<a href={createDeepLink('whatsapp', 'send', {
-							text: 'Tickets für das Rheinklang Festival 2019!'
-						})}>
-							<Icon select="whatsapp" appendClass="w-tickets__share-whatsapp" />
-						</a>
-					</div> */}
-					<SocialShare text="Tickets für das Rheinklang Festival 2019! https://rheinklang-festival.ch?shared-ticketing=true" url="https://rheinklang-festival.ch" />
+					<SocialShare text="Tickets für das Rheinklang Festival 2019! https://rheinklang-festival.ch/tickets?shared-visit" url="https://rheinklang-festival.ch/tickets?shared-visit" />
 				</div>}
 			</div>
 		)

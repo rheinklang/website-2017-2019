@@ -29,3 +29,5 @@ export const Section = ({ id, leaveContentSkewed, colorize, title, description, 
 		</section>
 	);
 };
+
+export default Section;

@@ -7,8 +7,12 @@
 
 	@include mobile {
 		padding: 20px 20px 0 20px;
-		min-height: auto;
+		min-height: 100px;
 	}
+}
+
+#RHEINKLANG-TYPO-MAIN {
+	max-width: 100%;
 }
 
 // ================ Edge drain animation

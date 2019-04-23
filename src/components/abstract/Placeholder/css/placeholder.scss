@@ -1,0 +1,12 @@
+.h-placeholder {
+	display: block;
+	border-radius: 8px;
+
+	&.h-placeholder--skin-white {
+		background-color: rgba(255, 255, 255, 0.3);
+	}
+
+	&.h-placeholder--skin-black {
+		background-color: rgba(0, 0, 0, 0.3);
+	}
+}

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as ReactGA from 'react-ga';
+
 import { createDeepLink } from '../../../helper/deeplink';
 import { Icon } from '../../atoms/Icon';
 import './css/socialshare.scss';
@@ -9,6 +11,16 @@ interface ISocialShareProps {
 }
 
 const TOOLTIP_POSITION = 'bottom';
+
+function trackSocialShareInteraction(name: string) {
+	return () => {
+		ReactGA.event({
+			action: `Click on Share Icon`,
+			category: 'Share',
+			label: name
+		});
+	}
+}
 
 export const SocialShare = (props: ISocialShareProps) => {
 	return (
@@ -22,6 +34,7 @@ export const SocialShare = (props: ISocialShareProps) => {
 						data-microtip-position={TOOLTIP_POSITION}
 						role="tooltip"
 						aria-label="WhatsApp"
+						onClick={trackSocialShareInteraction("WhatsApp")}
 					>
 						<Icon select="whatsapp" appendClass="w-tickets__share-whatsapp" />
 					</a>
@@ -34,6 +47,7 @@ export const SocialShare = (props: ISocialShareProps) => {
 						data-microtip-position="bottom"
 						role="tooltip"
 						aria-label="WhatsApp"
+						onClick={trackSocialShareInteraction("WhatsApp")}
 					>
 						<Icon select="whatsapp" appendClass="w-tickets__share-whatsapp" />
 					</a>
@@ -46,6 +60,7 @@ export const SocialShare = (props: ISocialShareProps) => {
 						data-microtip-position={TOOLTIP_POSITION}
 						role="tooltip"
 						aria-label="Facebook"
+						onClick={trackSocialShareInteraction("Facebook")}
 					>
 						<Icon select="facebook" />
 					</a>
@@ -58,6 +73,7 @@ export const SocialShare = (props: ISocialShareProps) => {
 						data-microtip-position={TOOLTIP_POSITION}
 						role="tooltip"
 						aria-label="Messenger"
+						onClick={trackSocialShareInteraction("Facebook Messenger")}
 					>
 						<Icon select="messenger" />
 					</a>

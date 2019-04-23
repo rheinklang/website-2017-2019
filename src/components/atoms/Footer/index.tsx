@@ -9,3 +9,5 @@ export const Footer = () => (
 		<I18n label="footer.text" />
 	</footer>
 );
+
+export default Footer;

@@ -33,6 +33,14 @@ export class TicketingStore {
 		return Boolean(this.ticketing.ticket_shop_online);
 	}
 
+	public get embeddFrameURL() {
+		return this.ticketing.ticket_embedd_url;
+	}
+
+	public get loaded() {
+		return Object.keys(this.ticketing).length > 0;
+	}
+
 	@action.bound
 	public async fetchTicketingInformation() {
 		const rawTicketing = await TicketingAPI.getTicketingInformation();

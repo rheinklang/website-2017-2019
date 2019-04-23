@@ -1,0 +1,11 @@
+@import '../../../../assets/css/viewport.scss';
+
+.o-react-ticket-app {
+	iframe {
+		min-height: 100vh;
+
+		@include desktop {
+			padding: 50px;
+		}
+	}
+}

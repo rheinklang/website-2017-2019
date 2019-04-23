@@ -6,10 +6,10 @@ import './css/base.scss';
 function trackSocialMediaInteractionHandler(name: string) {
 	return () => {
 		ReactGA.event({
-			action: `Social Media ${name}`,
+			action: `Click on Link `,
 			category: 'Social',
-			label: 'Social Media',
-		})
+			label: name
+		});
 	}
 }
 
@@ -43,3 +43,5 @@ export const SocialMediaLinks = () => {
 		</React.Fragment>
 	);
 };
+
+export default SocialMediaLinks;

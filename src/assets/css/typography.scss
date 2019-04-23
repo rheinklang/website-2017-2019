@@ -1,6 +1,10 @@
 @import './fonts.scss';
 
-body {
+body,
+button,
+input,
+select,
+textarea {
 	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 	font-size: 15px;
 }

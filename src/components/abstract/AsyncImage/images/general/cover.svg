@@ -3643,7 +3643,7 @@
                             </g>
                         </g>
                         <circle id="Oval" fill="#0E3536" fill-rule="nonzero" cx="225" cy="225.45" r="126.9"></circle>
-                        <text id="RHEINKLANG-TYPO-MAIN" font-family="FVAlmelo, FV Almelo" font-size="49.5" font-style="condensed" font-weight="normal" letter-spacing="0.990000021" fill="#F5F6E9">
+                        <text id="RHEINKLANG-TYPO-MAIN" font-family="FVAlmelo, FV Almelo, FVAlmeloRegular" font-size="49.5" font-style="condensed" font-weight="normal" letter-spacing="0.990000021" fill="#F5F6E9">
                             <tspan x="113.20725" y="243.2">RHEINKLAN</tspan>
                             <tspan x="314.47425" y="243.2" letter-spacing="0.9075001">G</tspan>
                         </text>

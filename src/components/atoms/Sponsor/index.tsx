@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactGA from 'react-ga';
 
 import { IDirectusImage } from '../../../schemes/cms/DirectusImage';
 import { PartnerPackageType } from '../../../schemes/Partner';
@@ -13,6 +14,16 @@ export interface ISponsorProps {
 	tooltip: string;
 	package: PartnerPackageType;
 	primary: boolean;
+}
+
+function trackSponsorCrosslink(name: string) {
+	return () => {
+		ReactGA.event({
+			action: `Click on Sponsor`,
+			category: 'Sponsor',
+			label: name
+		});
+	}
 }
 
 export const Sponsor = (props: ISponsorProps) => {
@@ -34,6 +45,7 @@ export const Sponsor = (props: ISponsorProps) => {
 			className={classList.join(' ')}
 			data-microtip-position="top" role="tooltip"
 			aria-label={name}
+			onClick={trackSponsorCrosslink(name)}
 		>
 			<CMSImage {...image} />
 		</a>

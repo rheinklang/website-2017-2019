@@ -6,4 +6,5 @@ export interface ITicketing extends IDirectusModel {
 	coming_soon_text: string;
 	embedd_frame?: string;
 	payment_methods_text: string;
+	ticket_embedd_url: string;
 }

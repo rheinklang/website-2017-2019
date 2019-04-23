@@ -1,6 +1,5 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
-import * as ReactGA from 'react-ga';
 import Helmet from 'react-helmet';
 import Loadable from 'react-loadable';
 
@@ -18,11 +17,26 @@ const Countdown = Loadable({
 	loader: () => import('./components/atoms/Countdown'),
 	loading: Loader
 });
-import { Footer } from './components/atoms/Footer';
+// import { Footer } from './components/atoms/Footer';
+const Footer = Loadable({
+	loader: () => import('./components/atoms/Footer'),
+	loading: Loader
+});
 import { TourDates } from './components/atoms/TourDates'; // can't load async due widget embedd
-import { Jumbotron } from './components/molecules/Jumbotron';
-import { Section } from './components/molecules/Section';
-import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
+const Jumbotron = Loadable({
+	loader: () => import('./components/molecules/Jumbotron'),
+	loading: Loader
+})
+// import { Section } from './components/molecules/Section';
+const Section = Loadable({
+	loader: () => import('./components/molecules/Section'),
+	loading: Loader
+});
+// import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
+const SocialMediaLinks = Loadable({
+	loader: () => import('./components/molecules/SocialMediaLinks'),
+	loading: Loader
+});
 const Sponsors = Loadable({
 	loader: () => import('./components/molecules/Sponsors'),
 	loading: Loader
@@ -31,22 +45,23 @@ const Articles = Loadable({
 	loader: () => import('./components/organisms/Articles'),
 	loading: Loader
 });
-const FacebookWidget = Loadable({
-	loader: () => import('./components/widgets/Facebook'),
-	loading: Loader
-});
+import { Cookies } from './components/atoms/Cookies';
+import { FacebookWidget } from './components/widgets/Facebook';
+// const FacebookWidget = Loadable({
+// 	loader: () => import('./components/widgets/Facebook'),
+// 	loading: Loader
+// });
 const Tickets = Loadable({
-	loader: () => import('./components/widgets/Tickets'),
+	loader: () => import('./components/molecules/Tickets'),
 	loading: Loader
 });
-import { GoogleAnalytics } from './partials/GoogleAnalytics';
-import { GoogleTagManager } from './partials/GoogleTagManager';
+// import { GoogleAnalytics } from './partials/GoogleAnalytics';
+// import { GoogleTagManager } from './partials/GoogleTagManager';
 
 // Store imports
 import { articles, configuration, i18n, partner, ticketing } from './store';
 import { ConfigurationStore } from './store/ConfigurationStore';
 
-const IS_PROD = process.env.NODE_ENV === 'production';
 
 export interface IAppProps {
 	configurationStore: ConfigurationStore
@@ -55,21 +70,6 @@ export interface IAppProps {
 export interface IAppState {
 	display: boolean;
 }
-
-// analytics setup
-ReactGA.initialize('UA-57645783-4', {
-	debug: !IS_PROD,
-	gaOptions: { cookieDomain: 'none' }
-});
-ReactGA.pageview(window.location.pathname + window.location.search);
-if(!IS_PROD) {
-	// tslint:disable-next-line:variable-name
-	const _gaq: any[] = (window as any)._gaq || [];
-	_gaq.push(["_setAccount", "UA-1234-1"]);
-	_gaq.push(["_setDomainName", "none"]);
-	_gaq.push(["_trackPageview"]);
-}
-
 @observer
 class App extends React.Component<IAppProps, IAppState> {
 	public state = {
@@ -84,8 +84,9 @@ class App extends React.Component<IAppProps, IAppState> {
 
 		return (
 			<main className="o-react-app">
+				<Cookies />
 				<Jumbotron />
-				<Section colorize="dark-turquise" title="Tickets">
+				<Section colorize="dark-turquise" title={ticketing.isTicketShopOnline ? undefined : "Tickets"}>
 					<Tickets ticketingStore={ticketing} />
 				</Section>
 				{articles.loaded && <Articles articlesStore={articles} />}
@@ -141,8 +142,8 @@ class App extends React.Component<IAppProps, IAppState> {
 				<FacebookWidget />
 				<Footer />
 				{this.injectDynamicMetaData()}
-				<GoogleAnalytics />
-				<GoogleTagManager />
+				{/* <GoogleAnalytics />
+				<GoogleTagManager /> */}
 			</main>
 		);
 	}
