@@ -8,9 +8,6 @@ import 'bulma/css/bulma.css';
 import 'microtip/microtip.css';
 import 'vanilla-tilt/dist/vanilla-tilt.min.js';
 
-// google analytics stuff
-import { initialize } from './analytics';
-
 // application content
 import App from './App';
 import { ErrorBoundary } from './ErrorBoundary';
@@ -24,9 +21,6 @@ import TicketApp from './Ticketing';
 // components
 import { Error404 } from './components/views/404/index';
 import { Datenschutz } from './components/views/datenschutz/index';
-
-// initialize GA
-initialize();
 
 ReactDOM.render(
 	<ErrorBoundary>

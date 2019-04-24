@@ -62,6 +62,9 @@ const Tickets = Loadable({
 import { articles, configuration, i18n, partner, ticketing } from './store';
 import { ConfigurationStore } from './store/ConfigurationStore';
 
+// analytics stuff
+import { initialize } from './analytics';
+
 
 export interface IAppProps {
 	configurationStore: ConfigurationStore
@@ -75,6 +78,10 @@ class App extends React.Component<IAppProps, IAppState> {
 	public state = {
 		display: true,
 	};
+
+	public componentWillMount() {
+		initialize();
+	}
 
 	public render() {
 		if(this.props.configurationStore) {

@@ -15,6 +15,9 @@ import { TicketingStore } from './store/TicketingStore';
 // Views
 import TicketsView from './components/views/tickets';
 
+// analytics stuff
+import { initialize } from './analytics';
+
 export interface ITicketAppProps {
 	configurationStore: ConfigurationStore,
 	ticketingStore: TicketingStore
@@ -22,6 +25,12 @@ export interface ITicketAppProps {
 
 @observer
 class TicketApp extends React.Component<ITicketAppProps> {
+	public static displayName = 'TicketApp';
+
+	public componentWillMount() {
+		initialize();
+	}
+
 	public componentDidMount() {
 		window.scrollTo({ top: 0 });
 	}
