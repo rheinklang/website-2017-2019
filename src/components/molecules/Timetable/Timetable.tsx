@@ -33,6 +33,7 @@ export class Timetable extends React.Component<ITimetableProps> {
 					<h4 className="m-timetable__entry-artist-name">
 						{entry.artist.data.name}
 					</h4>
+					{entry.artist.data.sub_artists && <h5 className="m-timetable__entry-sub-artists">{entry.artist.data.sub_artists}</h5>}
 					<p className="m-timetable__entry-artist-genre">#{entry.artist.data.genre}</p>
 				</div>
 			</div>

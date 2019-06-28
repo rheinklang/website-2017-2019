@@ -10,7 +10,7 @@ install:
 script:
   - npm run build
 env:
-  - NODE_ENV=production
+  - NODE_ENV=development
 matrix:
   fast_finish: true
 notifications:
