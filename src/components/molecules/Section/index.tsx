@@ -5,6 +5,7 @@ import './css/variations.scss';
 export interface ISectionProps {
 	children: any;
 	id?: string;
+	noSpace?: boolean;
 	title?: string;
 	description?: string;
 	skew?: string;
@@ -12,12 +13,12 @@ export interface ISectionProps {
 	colorize?: 'black' | 'red' | 'green' | 'dark-turquise' | 'white';
 }
 
-export const Section = ({ id, leaveContentSkewed, colorize, title, description, children, skew }: ISectionProps) => {
+export const Section = ({ id, noSpace, leaveContentSkewed, colorize, title, description, children, skew }: ISectionProps) => {
 	return (
 		<section
 			className={`m-section${id ? ` m-section--${id}` : ''}${skew ? ` m-section--skew-${skew}` : ''}${
 				colorize ? ` h-colorize--${colorize}` : ''
-				}`}
+				}${noSpace ? ' m-section--no-space' : ''}`}
 		>
 			<div className="m-section__slope">
 				<article className={"m-section__article" + (leaveContentSkewed ? 'm-section-article--skewed' : '')}>

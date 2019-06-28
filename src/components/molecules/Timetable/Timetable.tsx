@@ -26,7 +26,7 @@ export class Timetable extends React.Component<ITimetableProps> {
 		return (
 			<div className={`m-timetable__entry m-timetable__entry--${entry.type}`} key={entry.id}>
 				<div className="m-timetable__entry-slot">
-					<p>{entry.start_time} - {entry.end_time}</p>
+					<p>{entry.start_time}<span className="h-hide-on-mobile"> - {entry.end_time}</span></p>
 				</div>
 				<div className="m-timetable__entry-definition">
 					{entry.type === 'guest' && <p className="m-timetable__entry-artist-type">[Gastauftritt]</p>}

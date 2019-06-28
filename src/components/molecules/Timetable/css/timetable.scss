@@ -14,7 +14,7 @@
 .m-timetable__entry {
 	position: relative;
 	overflow: visible;
-	padding: 40px 0;
+	padding: 0 0 80px 0;
 	border-left: 3px solid #fff;
 }
 
@@ -71,10 +71,11 @@
 }
 
 .m-timetable__entry-artist-type {
-	margin: 0 0 5px 0;
+	margin: 0 0 15px 0;
 	line-height: 10px;
 	font-size: 10px;
-	font-weight: bold;
+	letter-spacing: .5rem;
+	font-weight: medium;
 	font-family: 'Lato', 'FVAlmelo', sans-serif;
 	text-transform: uppercase;
 }
@@ -113,8 +114,8 @@
 		margin-bottom: 20px;
 	}
 	.m-timetable__entry--headliner .m-timetable__entry-artist-name {
-		font-size: 75px;
-		line-height: 75px;
+		font-size: 85px;
+		line-height: 85px;
 	}
 	.m-timetable__entry-artist-type {
 		margin-left: 9px;

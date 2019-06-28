@@ -1,1 +1,1 @@
-export const DIRECTUS_API_TOKEN = 'you-really-wanted-to-see-the-token-huh'
+export const DIRECTUS_API_TOKEN = 'WcWyjE0D6tmXoXlU0YQxDMBaUkIdOwLr';

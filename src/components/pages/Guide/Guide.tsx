@@ -11,7 +11,7 @@ export const Guide = () => {
 	return (
 		<React.Fragment>
 			<AnimatedLogo />
-			<Section id="home" title="Wilkommen!" description="Hier findest du alle Information rund um das Rheinklang Festival 2019" colorize="red">
+			<Section noSpace={true} id="home" title="Wilkommen!" description="Hier findest du alle Information rund um das Rheinklang Festival 2019" colorize="red">
 				{null}
 			</Section>
 			<Section id="map" title="Karte" description="Das Rheinklang Festival 2019 im Überblick – Lageplan">
