@@ -6,17 +6,13 @@ import 'bulma/css/bulma.css';
 import 'microtip/microtip.css';
 import 'vanilla-tilt/dist/vanilla-tilt.min.js';
 
-// application content
-import App from './App';
+// runtime
 import { ErrorBoundary } from './ErrorBoundary';
-// import registerServiceWorker from './registerServiceWorker';
-
-// stores
-import { configuration } from './store';
+import Router from './Router';
 
 ReactDOM.render(
 	<ErrorBoundary>
-		<App configurationStore={configuration} />
+		<Router />
 	</ErrorBoundary>,
 	document.getElementById('root') as HTMLElement
 );
