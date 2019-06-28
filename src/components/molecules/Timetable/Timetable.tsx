@@ -2,6 +2,7 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { TimetableStore } from '../../../store/TimetableStore';
 import { ITimetable } from '../../../schemes/Timetable';
+import { Hashtag } from '../../atoms/Hashtag';
 
 interface ITimetableProps {
 	timetableStore: TimetableStore
@@ -34,7 +35,10 @@ export class Timetable extends React.Component<ITimetableProps> {
 						{entry.artist.data.name}
 					</h4>
 					{entry.artist.data.sub_artists && <h5 className="m-timetable__entry-sub-artists">{entry.artist.data.sub_artists}</h5>}
-					<p className="m-timetable__entry-artist-genre">#{entry.artist.data.genre}</p>
+					<div className="m-timetable__tags">
+						{entry.artist.data.genre && <Hashtag text={entry.artist.data.genre} />}
+						{entry.artist.data.location && <Hashtag text={entry.artist.data.location} />}
+					</div>
 				</div>
 			</div>
 		)

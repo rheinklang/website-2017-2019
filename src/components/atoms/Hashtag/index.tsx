@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './css/hashtag.scss';
 
 interface IHashtagProps {
 	text: string
@@ -6,6 +7,6 @@ interface IHashtagProps {
 
 export const Hashtag: React.FC<IHashtagProps> = ({ text }) => (
 	<div className="a-hashtag">
-		<p className="a-hashtag__text">{text}</p>
+		<p className="a-hashtag__text">#{text}</p>
 	</div>
 )

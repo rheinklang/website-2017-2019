@@ -6,6 +6,7 @@ export interface IArtist extends IDirectusModel {
 	genre: string;
 	sub_artists: string;
 	description: string;
+	location: string;
 	image: IDirectusImage;
 	slug: string;
 }
