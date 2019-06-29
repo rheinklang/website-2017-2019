@@ -1,0 +1,131 @@
+.m-timetable {
+	padding: 40px 0 60px 5px;
+	overflow: visible;
+	max-width: 800px;
+	display: block;
+	margin: 0 auto;
+}
+
+.m-timetable__entry-sub-artists {
+	max-width: 80%;
+	margin: 0 auto 20px auto;
+}
+
+.m-timetable__entry {
+	position: relative;
+	overflow: visible;
+	padding: 0 0 80px 0;
+	border-left: 3px solid #fff;
+}
+
+.m-timetable__entry::before {
+	content: "";
+	width: 11px;
+	height: 11px;
+	background-color: #0b363b;
+	border: 3px solid #fff;
+	border-radius: 11px;
+	position: absolute;
+	top: 0;
+	left: -7px;
+}
+
+.m-timetable__entry:last-of-type {
+	border-color: transparent;
+}
+
+.m-timetable__entry::after {
+	content: "";
+	clear: both;
+  	display: table;
+}
+
+.m-timetable__entry-slot {
+	margin-left: 10px;
+	width: 50px;
+	float: left;
+	text-align: left;
+}
+
+.m-timetable__entry-slot p {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.m-timetable__entry-definition {
+	display: block;
+	text-align: center;
+	float: left;
+	width: calc(100% - 60px);
+}
+
+.m-timetable__entry-artist-name {
+	font-size: 26px;
+	line-height: 26px;
+	margin-bottom: 18px;
+}
+
+.m-timetable__entry--headliner .m-timetable__entry-artist-name {
+	font-size: 55px;
+	line-height: 55px;
+}
+
+.m-timetable__entry-artist-type {
+	margin: 0 0 15px 0;
+	line-height: 10px;
+	font-size: 10px;
+	letter-spacing: .5rem;
+	font-weight: medium;
+	font-family: 'Lato', 'FVAlmelo', sans-serif;
+	text-transform: uppercase;
+}
+
+.m-timetable__entry-artist-genre {
+	display: inline-block;
+	padding: 4px 8px;
+	font-size: 11px;
+	border-radius: 15px;
+	background-color: #fff;
+	color: #0b363b;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: .2rem;
+}
+
+@media all and (min-width: 500px) {
+	.m-timetable__entry {
+		padding: 30px 0;
+	}
+	.m-timetable__entry-slot {
+		margin: 0;
+		text-align: right;
+		width: 150px;
+	}
+	.m-timetable__entry-slot p {
+		font-weight: normal;
+		font-size: 17px;
+	}
+	.m-timetable__entry-definition {
+		width: calc(100% - 150px);
+	}
+	.m-timetable__entry-artist-name {
+		font-size: 38px;
+		line-height: 38px;
+		margin-bottom: 20px;
+	}
+	.m-timetable__entry--headliner .m-timetable__entry-artist-name {
+		font-size: 85px;
+		line-height: 85px;
+	}
+	.m-timetable__entry-artist-type {
+		margin-left: 9px;
+		font-size: 15px;
+		line-height: 15px;
+	}
+	.m-timetable__entry-artist-genre {
+		padding: 5px 10px;
+		font-size: 15px;
+		border-radius: 15px;
+		text-transform: uppercase;
+	}
+}

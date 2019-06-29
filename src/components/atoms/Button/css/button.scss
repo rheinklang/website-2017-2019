@@ -1,0 +1,33 @@
+
+.a-button {
+	margin: 0 auto;
+	display: block;
+	padding: 13px 27px;
+	background-color: #fff;
+	transition: all 0.3s linear;
+	text-transform: uppercase;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.8);
+	}
+
+	a.a-button__content {
+		// override section defaults
+		color: #0b363b;
+	}
+
+	.a-button__content {
+		font-family: 'FVAlmeloRegular', 'Open Sans', sans-serif;
+		font-size: 25px;
+		color: #0b363b;
+
+		&a {
+			&:hover {
+				color: #0b363b;
+			}
+		}
+	}
+}

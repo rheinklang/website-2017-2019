@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
 import Helmet from 'react-helmet';
-import Loadable from 'react-loadable';
 
 import './assets/css/index.scss';
 
@@ -9,52 +8,37 @@ import { Loader } from './components/atoms/Loader/index';
 
 // Component imports
 import { getLabelFor } from './components/abstract/I18n';
-const AnimatedLogo = Loadable({
-	loader: () => import('./components/atoms/AnimatedLogo'),
-	loading: Loader
-});
-const Countdown = Loadable({
-	loader: () => import('./components/atoms/Countdown'),
-	loading: Loader
-});
+const AnimatedLogo = React.lazy(() =>
+	import(/* webpackChunkName: 'animatedLogo'*/ './components/atoms/AnimatedLogo')
+);
+const Countdown = React.lazy(() =>
+	import(/* webpackChunkName: 'countdown'*/ './components/atoms/Countdown')
+);
 // import { Footer } from './components/atoms/Footer';
-const Footer = Loadable({
-	loader: () => import('./components/atoms/Footer'),
-	loading: Loader
-});
+const Footer = React.lazy(() =>
+	import(/* webpackChunkName: 'footer'*/ './components/atoms/Footer')
+);
 import { TourDates } from './components/atoms/TourDates'; // can't load async due widget embedd
-const Jumbotron = Loadable({
-	loader: () => import('./components/molecules/Jumbotron'),
-	loading: Loader
-})
-// import { Section } from './components/molecules/Section';
-const Section = Loadable({
-	loader: () => import('./components/molecules/Section'),
-	loading: Loader
-});
-// import { SocialMediaLinks } from './components/molecules/SocialMediaLinks';
-const SocialMediaLinks = Loadable({
-	loader: () => import('./components/molecules/SocialMediaLinks'),
-	loading: Loader
-});
-const Sponsors = Loadable({
-	loader: () => import('./components/molecules/Sponsors'),
-	loading: Loader
-});
-const Articles = Loadable({
-	loader: () => import('./components/organisms/Articles'),
-	loading: Loader
-});
+const Jumbotron = React.lazy(() =>
+	import(/* webpackChunkName: 'jumbotron'*/ './components/molecules/Jumbotron')
+)
+const Section = React.lazy(() =>
+	import(/* webpackChunkName: 'section'*/ './components/molecules/Section')
+);
+const SocialMediaLinks = React.lazy(() =>
+	import(/* webpackChunkName: 'socialMediaLinks'*/ './components/molecules/SocialMediaLinks')
+);
+const Sponsors = React.lazy(() =>
+	import(/* webpackChunkName: 'sponsors'*/ './components/molecules/Sponsors')
+);
+const Articles = React.lazy(() =>
+	import(/* webpackChunkName: 'articles'*/ './components/organisms/Articles')
+);
 import { Cookies } from './components/atoms/Cookies';
 import { FacebookWidget } from './components/widgets/Facebook';
-// const FacebookWidget = Loadable({
-// 	loader: () => import('./components/widgets/Facebook'),
-// 	loading: Loader
-// });
-const Tickets = Loadable({
-	loader: () => import('./components/molecules/Tickets'),
-	loading: Loader
-});
+const Tickets = React.lazy(() =>
+	import(/* webpackChunkName: 'tickets'*/ './components/molecules/Tickets')
+);
 // import { GoogleAnalytics } from './partials/GoogleAnalytics';
 // import { GoogleTagManager } from './partials/GoogleTagManager';
 
@@ -90,11 +74,16 @@ class App extends React.Component<IAppProps, IAppState> {
 		}
 
 		return (
-			<main className="o-react-app">
+			<React.Suspense fallback="">
 				<Cookies />
 				<Jumbotron />
 				<Section colorize="dark-turquise" title={ticketing.isTicketShopOnline ? undefined : "Tickets"}>
-					<Tickets ticketingStore={ticketing} />
+					<Tickets
+						ticketingStore={ticketing}
+						additionalButtons={[
+							{ text: "Zum Festival 2019", link: "/festival-2019" }
+						]}
+					/>
 				</Section>
 				{articles.loaded && <Articles articlesStore={articles} />}
 				{!articles.loaded && <Loader />}
@@ -151,7 +140,7 @@ class App extends React.Component<IAppProps, IAppState> {
 				{this.injectDynamicMetaData()}
 				{/* <GoogleAnalytics />
 				<GoogleTagManager /> */}
-			</main>
+			</React.Suspense>
 		);
 	}
 

@@ -1,11 +1,11 @@
 import DirectusSDK from '@directus/sdk-js';
-import PASSWORD from './password';
+import { DIRECTUS_PASSWORD, DIRECTUS_USER } from '../env';
 
 const client = new DirectusSDK();
 
 client.login({
-	email: 'office@rheinklang-festival.ch',
-	password: PASSWORD,
+	email: DIRECTUS_USER,
+	password: DIRECTUS_PASSWORD,
 	url: 'https://cms.rheinklang-festival.ch',
 });
 

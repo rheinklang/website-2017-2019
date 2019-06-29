@@ -1,8 +1,8 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { stringify } from 'qs';
 
+import { DIRECTUS_API_TOKEN } from '../env';
 import { IDirectusResponse } from '../schemes/cms/DirectusResponse';
-import { DIRECTUS_API_TOKEN } from '../tokens';
 
 interface IRemoteInstanceOptions {
 	accessToken: string;
@@ -43,7 +43,7 @@ customHttpClient.interceptors.response.use(
 		// tslint:disable-next-line
 		console.warn(
 			`${(error.config.method || 'unknown').toUpperCase()} ${error.config.url} (withCredentials: ${
-				error.config.withCredentials
+			error.config.withCredentials
 			})`
 		);
 

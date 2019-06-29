@@ -59,3 +59,10 @@
 		}
 	}
 }
+
+// --------- LIGHT
+.w-tickets--cs-light {
+	.w-tickets__payment-foot-node  {
+		color: lighten(darken(#fff, 4), 13);
+	}
+}

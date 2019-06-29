@@ -6,12 +6,12 @@ import './css/animations.scss';
 import './css/base.scss';
 
 export interface IAnimatedLogoProps {
-	modifier?: string;
+	modifier?: 'offset-top';
 }
 
-export const AnimatedLogo = (props: IAnimatedLogoProps) => {
+export const AnimatedLogo: React.FC<IAnimatedLogoProps> = ({ modifier }) => {
 	return (
-		<div className="a-animated-logo">
+		<div className={"a-animated-logo" + (modifier ? ` a-animated-logo--${modifier}` : '')}>
 			<img
 				src={flower}
 				className="a-animated-logo__layer a-animated-logo__layer--leaf"

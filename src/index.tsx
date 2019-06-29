@@ -13,7 +13,7 @@ import App from './App';
 import { ErrorBoundary } from './ErrorBoundary';
 
 // stores
-import { configuration, ticketing } from './store';
+import { configuration, ticketing, timetable } from './store';
 
 // apps
 import TicketApp from './Ticketing';
@@ -21,21 +21,33 @@ import TicketApp from './Ticketing';
 // components
 import { Error404 } from './components/views/404/index';
 import { Datenschutz } from './components/views/datenschutz/index';
+import { Guide } from './components/views/guide/index';
 
 ReactDOM.render(
-	<ErrorBoundary>
-		<BrowserRouter>
-			<Switch>
-				<Route exact={true} path="/" render={() => (
+	<BrowserRouter>
+		<Switch>
+			<Route exact={true} path="/" render={() => (
+				<ErrorBoundary>
 					<App configurationStore={configuration} />
-				)} />
-				<Route exact={true} path="/tickets" render={() => (
+				</ErrorBoundary>
+			)} />
+			<Route exact={true} path="/tickets" render={() => (
+				<ErrorBoundary>
 					<TicketApp configurationStore={configuration} ticketingStore={ticketing} />
-				)} />
-				<Route exact={true} path="/datenschutz" component={Datenschutz} />
-				<Route component={Error404} />
-			</Switch>
-		</BrowserRouter>
-	</ErrorBoundary>,
+				</ErrorBoundary>
+			)} />
+			<Route exact={true} path="/festival-2019" render={() => (
+				<ErrorBoundary>
+					<Guide timetableStore={timetable} configurationStore={configuration} ticketingStore={ticketing} />
+				</ErrorBoundary>
+			)} />
+			<Route exact={true} path="/datenschutz" render={() => (
+				<ErrorBoundary>
+					<Datenschutz />
+				</ErrorBoundary>
+			)} />
+			<Route component={Error404} />
+		</Switch>
+	</BrowserRouter>,
 	document.getElementById('root') as HTMLElement
 );

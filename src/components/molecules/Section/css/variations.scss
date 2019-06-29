@@ -1,6 +1,10 @@
 @import '../../../../assets/css/viewport.scss';
 
 .m-section {
+	&.m-section--no-space {
+		margin-top: 0;
+	}
+
 	&.h-colorize--red {
 		color: #ffffff;
 		background-color: #ed8197;

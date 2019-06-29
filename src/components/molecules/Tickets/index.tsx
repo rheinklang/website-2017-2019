@@ -1,8 +1,9 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
+import { IButtonProps } from '../../atoms/Button';
 import { Icon } from '../../atoms/Icon';
+import { ButtonGroup } from '../ButtonGroup';
 import { SocialShare } from '../SocialShare';
 
 import { TicketingStore } from '../../../store/TicketingStore';
@@ -10,30 +11,32 @@ import { TicketingStore } from '../../../store/TicketingStore';
 import './css/tickets.scss';
 
 interface ITicketsProps {
-	ticketingStore: TicketingStore
+	ticketingStore: TicketingStore;
+	colorScheme?: 'dark' | 'light';
+	hideSocialShare?: boolean;
+	additionalButtons?: IButtonProps[];
 }
 
 @observer
 export class Tickets extends React.Component<ITicketsProps> {
 	public render() {
+		const { colorScheme = 'dark', hideSocialShare, ticketingStore, additionalButtons } = this.props;
 		const {
 			isTicketShopOnline,
 			areShareLinksEnabled,
 			paymentMethodsText,
-			comingSoonText
-		} = this.props.ticketingStore;
+			comingSoonText,
+		} = ticketingStore;
 
 		return (
-			<div className="w-tickets">
+			<div className={`w-tickets w-tickets--cs-${colorScheme}`}>
 				<div className="columns is-centered is-vcentered w-tickets__embedd-container">
 					<div className="column is-full">
 						{!isTicketShopOnline && <div className="w-tickets__coming-soon">
 							<h3>{comingSoonText}</h3>
 							<Icon select="price-tags" />
 						</div>}
-						{isTicketShopOnline && <button className="w-tickets__button">
-							<Link to="/tickets" className="w-tickets__button-link">Tickets kaufen</Link>
-						</button>}
+						<ButtonGroup buttons={[isTicketShopOnline ? { text: "Tickets kaufen", link: "/tickets" } : undefined].concat((additionalButtons || []))} />
 					</div>
 				</div>
 				<div className="columns w-tickets__payment-container">
@@ -48,7 +51,7 @@ export class Tickets extends React.Component<ITicketsProps> {
 						</p>
 					</div>
 				</div>
-				{areShareLinksEnabled && <div className="is-mobile is-centered w-tickets__share-container">
+				{(areShareLinksEnabled && !hideSocialShare) && <div className="is-mobile is-centered w-tickets__share-container">
 					<SocialShare text="Tickets für das Rheinklang Festival 2019! https://rheinklang-festival.ch/tickets?shared-visit" url="https://rheinklang-festival.ch/tickets?shared-visit" />
 				</div>}
 			</div>
