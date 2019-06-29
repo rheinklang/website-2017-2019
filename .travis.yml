@@ -9,6 +9,6 @@ install:
 script:
   - npm run build
 env:
-  - NODE_ENV=production
+  - NODE_ENV=development
 notifications:
   slack: rheinklang:BzAHcIwDekK6y8FmuOCPdW4t
