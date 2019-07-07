@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Helmet from 'react-helmet';
 
 import { initialize } from '../../../analytics';
 import { AnimatedLogo } from '../../atoms/AnimatedLogo';
@@ -60,6 +61,9 @@ export const Guide: React.FC<IGuideProps> = ({ timetableStore, ticketingStore })
 			<br />
 			<FacebookWidget />
 			<Footer />
+			<Helmet>
+				<title>Rheinklang Festival 2019 - Alle Details</title>
+			</Helmet>
 		</React.Suspense>
 	)
 }
