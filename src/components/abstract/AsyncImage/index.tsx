@@ -47,7 +47,7 @@ export class AsyncImage extends React.Component<IAsyncImageProps, IAsyncImageSta
 	}
 
 	private async loadAsyncImageImage() {
-		import(`./images/${this.props.path}`)
+		import(/* webpackChunkName: '[request]' */ `./images/${this.props.path}`)
 			.then((imagePath: string) => {
 				this.setState({
 					imagePath,

@@ -39,8 +39,10 @@ export const Guide: React.FC<IGuideProps> = ({ timetableStore, ticketingStore })
 	return (
 		<React.Suspense fallback="">
 			<AnimatedLogo modifier="offset-top" />
-			<Section noSpace={true} id="home" title="Wilkommen!" description="Hier findest du alle Information rund um das Rheinklang Festival 2019" colorize="red">
-				<Tickets hideSocialShare={true} colorScheme="light" ticketingStore={ticketingStore} />
+			<Section noSpace={true} id="home" title="Willkommen!" description="Hier findest du alle Information rund um das Rheinklang Festival 2019" colorize="red">
+				<Tickets hideSocialShare={true} colorScheme="light" ticketingStore={ticketingStore} additionalButtons={[
+					{ link: '/', text: 'Über uns' }
+				]} />
 			</Section>
 			<Section id="map" title="Karte" description="Das Rheinklang Festival 2019 im Überblick – Lageplan">
 				<GuideMap />
