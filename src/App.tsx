@@ -48,6 +48,7 @@ import { ConfigurationStore } from './store/ConfigurationStore';
 
 // analytics stuff
 import { initialize } from './analytics';
+import { DateInfo } from './components/atoms/DateInfo';
 
 
 export interface IAppProps {
@@ -78,6 +79,7 @@ class App extends React.Component<IAppProps, IAppState> {
 				<Cookies />
 				<Jumbotron />
 				<Section colorize="dark-turquise" title={ticketing.isTicketShopOnline ? undefined : "Tickets"}>
+					<DateInfo />
 					<Tickets
 						ticketingStore={ticketing}
 						additionalButtons={[
